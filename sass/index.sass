@@ -1,0 +1,112 @@
+html
+	height: 100%
+
+body
+	margin: 0
+	background-color: #dbf2fa
+	height: 100%
+
+.header
+	display: flex
+	align-items: center
+	justify-content: space-around
+	background-color: #0088cc
+	height: 10%
+	.logo
+		font-size: 2em
+		font-weight: 500
+
+	&-nav
+		width: 20%
+		display: flex
+		justify-content: space-between
+		&-link
+			color: black
+			text-decoration: none
+			font-size: 1.3em
+		&-link:hover
+			color: white
+			text-decoration: underline
+
+.container
+	position: relative
+	margin: 5% auto 0
+	width: 80%
+	min-height: 70%
+	
+	.tasks-field
+		position: absolute
+		display: flex
+		align-items: flex-start
+		justify-content: space-around
+		width: 100%
+		height: 100%
+		border-radius: 10px
+		padding: 10px
+		.tasks
+			display: flex
+			flex-direction: column
+			width: 25%
+			min-height: 100%
+			border: 2px solid black//remove
+			border-radius: 5px
+			&-header
+				text-align: center
+
+		.new-tasks
+			border: 2px solid #006600
+			&-header
+				background-color: #99cc33
+				display: flex
+				align-items: center
+				justify-content: center
+				.add-task
+					position: relative
+					left: 20%
+					&:hover
+						background-color: #339900
+						color: white
+		.progress-tasks
+			border: 2px solid #cccc00
+			&-header
+				background-color: #cc9900
+		.finished-tasks
+			border: 2px solid #999999
+			&-header
+				background-color: #cccccc
+
+.button
+	display: flex
+	align-items: center
+	justify-content: center
+	border: none
+	border-radius: 50%
+	width: 35px
+	height: 35px
+	&:focus
+		outline: none
+
+.modal
+	position: absolute
+	display: flex
+	align-items: center
+	justify-content: center
+	top: 0
+	left: 0
+	width: 100%
+	height: 100%
+	z-index: 2
+	background-color: rgba(0,0,0,0.4)
+	.control
+		width: 50%
+		height: 50%
+		background-color: #fff
+		.close-button
+			position: relative
+			left: 100%
+			top: -5%
+			background-color: #990000
+			color: white
+
+.unvisible
+	display: none

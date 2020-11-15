@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="css/fontawesome/all.min.css">
+	<link rel="stylesheet" href="css/index.css">
+	<script src="js/index.js" defer></script>
+	<title>Task Manager</title>
+</head>
+<body>
+	<header class="header">
+		<div class="logo">Task Manager</div>
+		<nav class="header-nav">
+			<a href="#" class="header-nav-link">Settings</a>
+			<a href="#" class="header-nav-link">GitHub</a>
+			<a href="#" class="header-nav-link">About</a>
+			<a href="#" class="header-nav-link">Contacts</a>
+		</nav>
+	</header>
+	<div class="container">
+		<div class="tasks-field">
+			<div class="new-tasks tasks">
+				<div class="new-tasks-header tasks-header">
+					<h2 class="tasks-title">New tasks</h2>
+					<button class="add-task button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+				</div>
+			</div>
+			<div class="progress-tasks tasks">
+				<div class="progress-tasks-header tasks-header">
+					<h2 class="tasks-title">Progress tasks</h2>
+				</div>
+			</div>
+			<div class="finished-tasks tasks">
+				<div class="finished-tasks-header tasks-header">
+					<h2 class="tasks-title">Finished tasks</h2>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="modal unvisible">
+		<div class="control">
+			<button class="close-button button"><i class="fas fa-times"></i></button>
+
+		</div>
+	</div>
+</body>
+</html>
