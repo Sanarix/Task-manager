@@ -9,9 +9,14 @@ body {
 }
 
 .header {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   background-color: #0088cc;
   height: 10%;
 }
@@ -21,8 +26,12 @@ body {
 }
 .header-nav {
   width: 20%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  justify-content: space-between;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 .header-nav-link {
   color: black;
@@ -42,17 +51,27 @@ body {
 }
 .container .tasks-field {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: flex-start;
-  justify-content: space-around;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   width: 100%;
   height: 100%;
   border-radius: 10px;
   padding: 10px;
 }
 .container .tasks-field .tasks {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   width: 25%;
   min-height: 100%;
   border: 2px solid black;
@@ -66,15 +85,21 @@ body {
 }
 .container .tasks-field .new-tasks-header {
   background-color: #99cc33;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
 }
-.container .tasks-field .new-tasks-header .add-task {
+.container .tasks-field .new-tasks-header .open-modal-button {
   position: relative;
   left: 20%;
 }
-.container .tasks-field .new-tasks-header .add-task:hover {
+.container .tasks-field .new-tasks-header .open-modal-button:hover {
   background-color: #339900;
   color: white;
 }
@@ -92,9 +117,15 @@ body {
 }
 
 .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   border: none;
   border-radius: 50%;
   width: 35px;
@@ -106,9 +137,15 @@ body {
 
 .modal {
   position: absolute;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   top: 0;
   left: 0;
   width: 100%;
@@ -117,16 +154,63 @@ body {
   background-color: rgba(0, 0, 0, 0.4);
 }
 .modal .control {
-  width: 50%;
-  height: 50%;
+  width: 25%;
+  height: 40%;
   background-color: #fff;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 10px;
+}
+.modal .control .control-body {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 100%;
+  height: 100%;
+}
+.modal .control .add-task-descr {
+  width: 50%;
+  height: 40%;
+  resize: none;
+  margin-bottom: 20px;
 }
 .modal .control .close-button {
   position: relative;
-  left: 100%;
+  border-radius: 50%;
+  left: 52%;
   top: -5%;
   background-color: #990000;
   color: white;
+}
+.modal .control .close-button:hover {
+  background-color: #cc0000;
+}
+.modal .control .add-task-button {
+  width: 50%;
+  padding: 10px;
+  background-color: #00cc33;
+  border: 2px solid #009966;
+  border-radius: 5px;
+}
+.modal .control .add-task-button:hover {
+  background-color: #00ff33;
 }
 
 .unvisible {

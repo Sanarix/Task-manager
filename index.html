@@ -23,7 +23,7 @@
 			<div class="new-tasks tasks">
 				<div class="new-tasks-header tasks-header">
 					<h2 class="tasks-title">New tasks</h2>
-					<button class="add-task button"><i class="fa fa-plus" aria-hidden="true"></i></button>
+					<button class="open-modal-button button"><i class="fa fa-plus" aria-hidden="true"></i></button>
 				</div>
 			</div>
 			<div class="progress-tasks tasks">
@@ -41,7 +41,10 @@
 	<div class="modal unvisible">
 		<div class="control">
 			<button class="close-button button"><i class="fas fa-times"></i></button>
-
+			<div class="control-body">
+				<textarea class="add-task-descr" name="descr" autocomplete="off" placeholder="Enter your task here..." required></textarea>
+				<button class = "add-task-button">Add task</button>
+			</div>
 		</div>
 	</div>
 </body>
