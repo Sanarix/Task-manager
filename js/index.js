@@ -24,6 +24,7 @@ addTaskButton.addEventListener('click', event => {
 
 openModalButton.addEventListener('click', () => {
 	modalTask.classList.toggle('unvisible');
+	addTaskText.focus();
 });
 
 closeButton.addEventListener('click', () => {
