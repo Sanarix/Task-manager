@@ -4,7 +4,7 @@ html
 body
 	margin: 0
 	background-color: #dbf2fa
-	min-height: 100%
+	height: 100%
 
 .header
 	display: flex
@@ -29,31 +29,30 @@ body
 			text-decoration: underline
 
 .container
-	position: relative
-	margin: 5% auto 
 	width: 80%
-	height: 60%
-	max-height: 100%//посмотреть на этот параметр
+	margin: auto
+	min-height: 50%
+	margin-top: 5%
+	padding: 10px
 	
 	.main
 		display: flex
 		align-items: flex-start
 		justify-content: space-around
 		width: 100%
-		height: 100%
-		padding: 10px
+		max-height: 100%
 		.tasks
 			display: flex
 			flex-direction: column
 			width: 25%
-			min-height: 100%
+			height: 100%
 			border-radius: 5px
 			&-header
 				text-align: center
 				margin-bottom: 10px
 			&-field
 				width: 100%
-				height: 100%
+				max-height: 100%
 
 		.new-tasks
 			border: 2px solid #006600
@@ -87,7 +86,7 @@ body
 	height: 35px
 	&:focus
 		outline: none
-
+// Параметры модального окна начало
 .modal-task
 	position: absolute
 	display: flex
@@ -141,6 +140,8 @@ body
 			&:hover
 				background-color: #00ff15
 
+// Параметры модального окна конец
+
 .task
 	width: 80%
 	margin: 0 auto 10px
@@ -152,5 +153,6 @@ body
 		font-weight: 500
 		padding: 5px
 
+// Дополнительные стили
 .unvisible
 	display: none
