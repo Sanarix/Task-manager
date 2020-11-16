@@ -29,6 +29,7 @@ openModalButton.addEventListener('click', () => {
 
 closeButton.addEventListener('click', () => {
 	modalTask.classList.toggle('unvisible');
+	addTaskText.value = "";
 });
 
 
