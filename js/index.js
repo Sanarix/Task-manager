@@ -8,11 +8,6 @@ const addTaskText = document.querySelector('.add-task-text');
 const closeButton = document.querySelector('.close-button');
 const addTaskButton = document.querySelector('.add-task-button');
 
-const newTasksArr = [];
-const continueTasksArr = [];
-const finishedTasksarr = [];
-
-
 
 function createNewTask(taskText) {
 	const taskForm = document.createElement('div');
