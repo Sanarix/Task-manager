@@ -20,16 +20,19 @@ addTaskButton.addEventListener('click', event => {
 	createNewTask(addTaskText.value);
 	addTaskText.value = "";
 	modalTask.classList.toggle('unvisible');
+	document.body.style.overflow = '';
 });
 
 openModalButton.addEventListener('click', () => {
 	modalTask.classList.toggle('unvisible');
 	addTaskText.focus();
+	document.body.style.overflow = 'hidden';
 });
 
 closeButton.addEventListener('click', () => {
 	modalTask.classList.toggle('unvisible');
 	addTaskText.value = "";
+	document.body.style.overflow = '';
 });
 
 
