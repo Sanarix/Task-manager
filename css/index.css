@@ -45,11 +45,11 @@ body {
 
 .container {
   position: relative;
-  margin: 5% auto 0;
+  margin: 5% auto;
   width: 80%;
   min-height: 70%;
 }
-.container .tasks-field {
+.container .main {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -64,7 +64,7 @@ body {
   border-radius: 10px;
   padding: 10px;
 }
-.container .tasks-field .tasks {
+.container .main .tasks {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -77,13 +77,18 @@ body {
   border: 2px solid black;
   border-radius: 5px;
 }
-.container .tasks-field .tasks-header {
+.container .main .tasks-header {
   text-align: center;
+  margin-bottom: 10px;
 }
-.container .tasks-field .new-tasks {
+.container .main .tasks-field {
+  width: 100%;
+  height: 100%;
+}
+.container .main .new-tasks {
   border: 2px solid #006600;
 }
-.container .tasks-field .new-tasks-header {
+.container .main .new-tasks-header {
   background-color: #99cc33;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -95,24 +100,24 @@ body {
       -ms-flex-pack: center;
           justify-content: center;
 }
-.container .tasks-field .new-tasks-header .open-modal-button {
+.container .main .new-tasks-header .open-modal-button {
   position: relative;
   left: 20%;
 }
-.container .tasks-field .new-tasks-header .open-modal-button:hover {
+.container .main .new-tasks-header .open-modal-button:hover {
   background-color: #339900;
   color: white;
 }
-.container .tasks-field .progress-tasks {
+.container .main .progress-tasks {
   border: 2px solid #cccc00;
 }
-.container .tasks-field .progress-tasks-header {
+.container .main .progress-tasks-header {
   background-color: #cc9900;
 }
-.container .tasks-field .finished-tasks {
+.container .main .finished-tasks {
   border: 2px solid #999999;
 }
-.container .tasks-field .finished-tasks-header {
+.container .main .finished-tasks-header {
   background-color: #cccccc;
 }
 
@@ -126,8 +131,8 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  border: none;
   border-radius: 50%;
+  border: none;
   width: 35px;
   height: 35px;
 }
@@ -135,7 +140,7 @@ body {
   outline: none;
 }
 
-.modal {
+.modal-task {
   position: absolute;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -153,10 +158,7 @@ body {
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.4);
 }
-.modal .control {
-  width: 25%;
-  height: 40%;
-  background-color: #fff;
+.modal-task-control {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -167,9 +169,17 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  width: 25%;
+  height: 50%;
   padding: 10px;
+  background-color: #fff;
+  border-radius: 10px;
 }
-.modal .control .control-body {
+.modal-task-control .close-button-container {
+  width: 100%;
+  height: 100%;
+}
+.modal-task-control .control-body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -185,32 +195,42 @@ body {
   width: 100%;
   height: 100%;
 }
-.modal .control .add-task-descr {
+.modal-task-control .add-task-text {
   width: 50%;
   height: 40%;
   resize: none;
   margin-bottom: 20px;
 }
-.modal .control .close-button {
+.modal-task-control .close-button {
   position: relative;
-  border-radius: 50%;
-  left: 52%;
+  left: 100%;
   top: -5%;
   background-color: #990000;
   color: white;
 }
-.modal .control .close-button:hover {
+.modal-task-control .close-button:hover {
   background-color: #cc0000;
 }
-.modal .control .add-task-button {
+.modal-task-control .add-task-button {
   width: 50%;
   padding: 10px;
   background-color: #00cc33;
   border: 2px solid #009966;
   border-radius: 5px;
 }
-.modal .control .add-task-button:hover {
-  background-color: #00ff33;
+.modal-task-control .add-task-button:hover {
+  background-color: #00ff15;
+}
+
+.task {
+  width: 80%;
+  margin: 0 auto 10px;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: rgba(174, 252, 86, 0.8);
+  font-size: 1.1em;
+  font-weight: 500;
+  letter-spacing: 1px;
 }
 
 .unvisible {

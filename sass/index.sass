@@ -30,11 +30,11 @@ body
 
 .container
 	position: relative
-	margin: 5% auto 0
+	margin: 5% auto 
 	width: 80%
 	min-height: 70%
 	
-	.tasks-field
+	.main
 		position: absolute
 		display: flex
 		align-items: flex-start
@@ -52,6 +52,10 @@ body
 			border-radius: 5px
 			&-header
 				text-align: center
+				margin-bottom: 10px
+			&-field
+				width: 100%
+				height: 100%
 
 		.new-tasks
 			border: 2px solid #006600
@@ -79,14 +83,14 @@ body
 	display: flex
 	align-items: center
 	justify-content: center
-	border: none
 	border-radius: 50%
+	border: none
 	width: 35px
 	height: 35px
 	&:focus
 		outline: none
 
-.modal
+.modal-task
 	position: absolute
 	display: flex
 	align-items: center
@@ -97,14 +101,18 @@ body
 	height: 100%
 	z-index: 2
 	background-color: rgba(0,0,0,0.4)
-	.control
-		width: 25%
-		height: 40%
-		background-color: #fff
+	&-control
 		display: flex
 		flex-direction: column
 		align-items: center
+		width: 25%
+		height: 50%
 		padding: 10px
+		background-color: #fff
+		border-radius: 10px
+		.close-button-container
+			width: 100%
+			height: 100%
 		.control-body
 			display: flex
 			flex-direction: column
@@ -112,15 +120,14 @@ body
 			justify-content: space-around
 			width: 100%
 			height: 100%
-		.add-task-descr
+		.add-task-text
 			width: 50%
 			height: 40%
 			resize: none
 			margin-bottom: 20px
 		.close-button
 			position: relative
-			border-radius: 50%
-			left: 52%
+			left: 100%
 			top: -5%
 			background-color: #990000
 			color: white
@@ -134,7 +141,17 @@ body
 			border: 2px solid #009966
 			border-radius: 5px
 			&:hover
-				background-color: #00ff33
+				background-color: #00ff15
+
+.task
+	width: 80%
+	margin: 0 auto 10px
+	padding: 10px
+	border: 1px solid black
+	background-color: rgba(174, 252, 86, 0.8)
+	font-size: 1.1em
+	font-weight: 500
+	letter-spacing: 1px
 
 .unvisible
 	display: none
