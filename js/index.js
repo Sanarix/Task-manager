@@ -12,7 +12,7 @@ const addTaskButton = document.querySelector('.add-task-button');
 function createNewTask(taskText) {
 	const taskForm = document.createElement('div');
 	taskForm.classList.add('task');
-	taskForm.innerHTML = `<p>${taskText}</p>`;
+	taskForm.innerHTML = `<p class="task-text">${taskText}</p>`;
 	newTasksField.appendChild(taskForm);
 }
 

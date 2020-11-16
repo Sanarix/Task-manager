@@ -4,7 +4,7 @@ html
 body
 	margin: 0
 	background-color: #dbf2fa
-	height: 100%
+	min-height: 100%
 
 .header
 	display: flex
@@ -32,23 +32,21 @@ body
 	position: relative
 	margin: 5% auto 
 	width: 80%
-	min-height: 70%
+	height: 60%
+	max-height: 100%//посмотреть на этот параметр
 	
 	.main
-		position: absolute
 		display: flex
 		align-items: flex-start
 		justify-content: space-around
 		width: 100%
 		height: 100%
-		border-radius: 10px
 		padding: 10px
 		.tasks
 			display: flex
 			flex-direction: column
 			width: 25%
 			min-height: 100%
-			border: 2px solid black//remove
 			border-radius: 5px
 			&-header
 				text-align: center
@@ -146,12 +144,13 @@ body
 .task
 	width: 80%
 	margin: 0 auto 10px
-	padding: 10px
-	border: 1px solid black
+	border: 2px solid green
+	border-radius: 5px
 	background-color: rgba(174, 252, 86, 0.8)
-	font-size: 1.1em
-	font-weight: 500
-	letter-spacing: 1px
+	&-text
+		font-size: 1.1em
+		font-weight: 500
+		padding: 5px
 
 .unvisible
 	display: none
