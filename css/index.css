@@ -229,6 +229,7 @@ body {
   font-size: 1.1em;
   font-weight: 500;
   padding: 5px;
+  word-wrap: break-word;
 }
 .task:first-child {
   margin-top: 10px;
