@@ -1,11 +1,6 @@
-html {
-  height: 100%;
-}
-
 body {
   margin: 0;
   background-color: #dbf2fa;
-  height: 100%;
 }
 
 .header {
@@ -138,19 +133,10 @@ body {
 
 .modal-task {
   position: absolute;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 120%;
   z-index: 2;
   background-color: rgba(0, 0, 0, 0.4);
 }
@@ -166,8 +152,9 @@ body {
       -ms-flex-align: center;
           align-items: center;
   width: 25%;
-  height: 50%;
+  height: 40%;
   padding: 10px;
+  margin: 10% auto 0;
   background-color: #fff;
   border-radius: 10px;
 }

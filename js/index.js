@@ -7,6 +7,8 @@ const openModalButton = document.querySelector('.open-modal-button');
 const addTaskText = document.querySelector('.add-task-text');
 const closeButton = document.querySelector('.close-button');
 const addTaskButton = document.querySelector('.add-task-button');
+const task = newTasksElem.querySelectorAll('.task');
+
 
 
 function createNewTask(taskText) {
