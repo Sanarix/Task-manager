@@ -1,7 +1,5 @@
 const newTasksElem = document.querySelector('.new-tasks');
 const newTasksField = newTasksElem.querySelector('.tasks-field')
-const continueTasksElem = document.querySelector('.continue-tasks');
-const finishedTasksElem = document.querySelector('.finished-tasks');
 const modalTask = document.querySelector('.modal-task');
 const openModalButton = document.querySelector('.open-modal-button');
 const addTaskText = document.querySelector('.add-task-text');
