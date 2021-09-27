@@ -1,3 +1,5 @@
+import { about } from "./about";
+
 const newTasksElem = document.querySelector('.new-tasks');
 const newTasksField = newTasksElem.querySelector('.tasks-field')
 const modalTask = document.querySelector('.modal-task');
