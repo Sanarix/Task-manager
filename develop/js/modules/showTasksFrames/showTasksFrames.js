@@ -1,4 +1,4 @@
-import { newTaskFrame } from "./newTaskFrame.js";
+import { newTaskFrame } from "./newTaskFrame";
 import { progressTaskFrame } from "./progressTaskFrame";
 import { finishTaskFrame } from "./finishTaskFrame";
 

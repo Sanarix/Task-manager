@@ -1,4 +1,4 @@
 import '../css/index.css';
-import { showTasksFrames } from "./modules/tasksFrames/showTasksFrames.js";
+import { showTasksFrames } from "./modules/showTasksFrames/showTasksFrames.js";
 
 showTasksFrames();
