@@ -1,20 +1,20 @@
 import { taskFrame } from "./taskFrame";
 
 export function showTasksFrames() {
-	const tasksContainer = document.querySelector('.tasks-container');
+	const container = document.querySelector('.main');
 	
 	const newTaskframe = new taskFrame(
-		tasksContainer,
+		container,
 		'new-task-frame task-frame'
 		);
 
 	const progressTaskFrame = new taskFrame(
-		tasksContainer,
+		container,
 		'progress-task-frame task-frame'
 		);
 
 	const finishTaskFrame = new taskFrame(
-		tasksContainer,
+		container,
 		'finish-task-frame task-frame'
 		);
 
