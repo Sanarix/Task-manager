@@ -1,23 +1,22 @@
 export function settings() {
 	return `
-	<div class="settings-container">
-			<form action="settings">
-				<fieldset>
-					<legend>Main</legend>
-					<label for="theme">Choose main theme:</label>
-					<select name="theme" id="theme">
-					<option value="light">Light</option>
-					<option value="dark">Dark</option>
-				</select>
-				</fieldset>
-				<fieldset>
-					<legend>Special</legend>
-					<label for="blind">Blind mode:</label>
-					Yes<input type="radio" id="blind" name="blind">
-					No<input type="radio" id="blind" name="blind" checked>
-				</fieldset>
-				<button type="submit">Submit</button>
-			</form>
+		<div class="settings-container">
+
+		<h3>Main settings</h3>
+		<div class="setting-option main-theme">
+			<header class="setting-option_header">
+				Dark mode
+			</header>
+			<div class="switch-btn"></div>
 		</div>
+
+		<h3>Spicial options</h3>
+		<div class="setting-option">
+			Blind mode
+			<div class="switch-btn"></div>
+		</div>
+
+		<button class="submit-button">Submit</button>
+	</div>
 	`
 }

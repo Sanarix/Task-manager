@@ -44,5 +44,47 @@ body
 	border-radius: 3px
 
 .settings-container
-	padding: 20px	
+	width: 40%
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: center
+	padding: 2vh	
 	border: 1px solid #0c1217
+	.setting-option
+		display: flex
+		flex-direction: column
+		align-items: center
+		justify-content: center
+		.switch-btn 
+			display: inline-block
+			width: 36px /* ширина */
+			height: 19px /* высота */
+			border-radius: 19px /* радиус скругления */
+			background: #bfbfbf /* цвет фона */
+			z-index: 0
+			margin: 0
+			padding: 0
+			border: none
+			cursor: pointer
+			position: relative
+			transition-duration: 300ms /* анимация */
+
+		.switch-btn::after 
+			content: ""
+			height: 16px /* высота кнопки */
+			width: 16px/* ширина кнопки */
+			border-radius: 17px
+			background: #fff /* цвет кнопки */
+			top: 1.5px /* положение кнопки по вертикали относительно основы */
+			left: 1.5px /* положение кнопки по горизонтали относительно основы */
+			transition-duration: 300ms /* анимация */
+			position: absolute
+			z-index: 1
+		
+		.switch-on 
+			background: #118c4e
+		
+		.switch-on::after 
+			left: 18.5px
+		

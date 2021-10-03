@@ -16,6 +16,9 @@ nav.addEventListener('click', (event) => {
 		if(target.dataset.name == page.name) {
 			main.innerHTML = page.func();
 		}
+		if(page.handler) {
+			page.handler();
+		}
 	}
 })
 
