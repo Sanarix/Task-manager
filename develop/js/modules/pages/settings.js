@@ -1,6 +1,6 @@
-export function settings() {
-	return `
-	<div class="settings-container">
+export function settings(update) {
+	let content = update ||
+	`<div class="settings-container">
 
 	<div class="main-settings">
 		<h3>Main settings</h3>
@@ -27,5 +27,6 @@ export function settings() {
 	<button class="submit-btn">Submit</button>
 
 </div>
-	`
+	`;
+	return content
 }
