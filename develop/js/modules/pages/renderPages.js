@@ -3,14 +3,14 @@ import { about } from "./about";
 import { contacts } from "./contacts";
 import { clickHandler } from "./clickHandler";
 
-import { updateSettings } from "../settings/updateSettings";
+import { settingsHandler } from "../settings/settingsHandler";
 
 export function renderPages() {
 	const pages = [
 		{
 			func: settings,
 			name: settings.name,
-			handler: updateSettings,
+			handler: settingsHandler,
 		},
 		{
 			func: about,
