@@ -8,6 +8,7 @@ export function showTasksFrames() {
 		'new-task-frame task-frame',
 		'task-header new-task',
 		'New Task',
+		'./img/add-crist-in-circle.svg',
 		);
 
 	const progressTaskFrame = new taskFrame(

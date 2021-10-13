@@ -1,6 +1,7 @@
-import { updateStorage } from "./updateStorage";
+import { settings } from "../pages/settings";
 
 export function updateSettings() {
-	const storage = new updateStorage();
-	return storage
+	const update = document.querySelector('.main').innerHTML;
+	settings(update);
+	console.log('updateSettings отработал, передаю значение в settings');
 }

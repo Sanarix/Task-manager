@@ -16,8 +16,7 @@ export function settingsHandler() {
 	}
 	submitBtn.addEventListener('click', event => {
 		event.preventDefault();
-		const storage = updateSettings();
-		let update = document.querySelector('.main').innerHTML;
-		storage.setUpdate(update);
+		updateSettings();
+		alert('Saved');
 	})
 }
