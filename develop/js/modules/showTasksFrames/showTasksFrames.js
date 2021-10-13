@@ -1,4 +1,5 @@
 import { taskFrame } from "./taskFrame";
+import { openModalNewTask } from "../popUp/logic/openModalNewTask";
 
 export function showTasksFrames() {
 	const container = document.querySelector('.main');
@@ -28,4 +29,5 @@ export function showTasksFrames() {
 	newTaskframe.render();
 	progressTaskFrame.render();
 	finishTaskFrame.render();
+	openModalNewTask();
 }
