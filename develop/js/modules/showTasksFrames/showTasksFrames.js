@@ -1,6 +1,7 @@
 import { taskFrame } from "./taskFrame";
-import { openModalNewTask } from "../popUp/logic/openModalNewTask";
-import { closeModal } from "../popUp/logic/closeModal";
+import { openModalNewTask } from "../modal/logic/openModalNewTask";
+import { closeModal } from "../modal/logic/closeModal";
+import { renderPages } from "../pages/renderPages";
 
 export function showTasksFrames() {
 	const container = document.querySelector('.main');
@@ -32,4 +33,5 @@ export function showTasksFrames() {
 	finishTaskFrame.render();
 	openModalNewTask();
 	closeModal();
+	renderPages();
 }

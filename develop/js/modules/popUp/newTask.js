@@ -1,5 +1,0 @@
-export function createNewTask() {
-	return `
-	
-	`
-}
