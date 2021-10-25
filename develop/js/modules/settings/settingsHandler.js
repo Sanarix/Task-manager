@@ -14,9 +14,4 @@ export function settingsHandler() {
 		}
 		})
 	}
-	submitBtn.addEventListener('click', event => {
-		event.preventDefault();
-		updateSettings();
-		alert('Saved');
-	})
 }

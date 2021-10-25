@@ -1,6 +1,5 @@
 import { taskFrame } from "./taskFrame";
 import { openModalNewTask } from "../modal/logic/openModalNewTask";
-import { closeModal } from "../modal/logic/closeModal";
 import { renderPages } from "../pages/renderPages";
 
 export function showTasksFrames() {
@@ -32,6 +31,5 @@ export function showTasksFrames() {
 	progressTaskFrame.render();
 	finishTaskFrame.render();
 	openModalNewTask();
-	closeModal();
 	renderPages();
 }

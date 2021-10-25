@@ -165,8 +165,8 @@ body
 	top: 0
 	left: 100%
 	transform: translateX(-50%) translateY(50%)
-	width: 3vh
-	height: 3vh
+	width: 3.5vh
+	height: 3.5vh
 	background-color: #fff
 
 .visible
@@ -186,12 +186,13 @@ body
 		height: 5vh
 		margin-bottom: 2vh
 		font-size: 1.5em
+		border: 2px solid black
 	.task-text
 		font-size: 1.2em
 		width: 45vh
 		height: 10vh
 		resize: none
-		
+		border: 2px solid black
 
 .vertical-line
 	height: 100%
@@ -215,3 +216,30 @@ body
 	.btn-img
 		width: 3vh
 		height: 3vh
+
+//modalAuth
+.auth
+	display: flex
+	align-items: center
+	justify-content: center
+	flex-direction: column
+	.auth-header
+		font-size: 1.5em
+		margin: 0 0 1em 0
+		padding: 0
+	.inputs
+		display: flex
+		align-items: center
+		justify-content: center
+		flex-direction: column
+		input
+			height: 5vh
+			width: 100%
+			border: 2px solid black
+			margin-bottom: 3vh
+			font-size: 1.2em
+	.auth-buttons
+		.auth-button
+			width: 15vh
+			height: 4vh
+			cursor: pointer

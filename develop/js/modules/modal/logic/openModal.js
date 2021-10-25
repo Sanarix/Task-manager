@@ -1,3 +1,5 @@
+import { closeModal } from "./closeModal";
+
 export function openModal(element, content) {
 	const overlay = document.querySelector('.overlay');
 	const modalContent = document.querySelector('.modal-content');
@@ -9,5 +11,5 @@ export function openModal(element, content) {
 		modalContent.innerHTML = content;
 	});
 	
-	
+	closeModal();
 }

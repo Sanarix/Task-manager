@@ -1,9 +1,10 @@
 import { showTasksFrames } from "../showTasksFrames/showTasksFrames";
+import { openModalAuth } from "../modal/logic/openModalAuth";
 
 export function clickHandler(pages) {
 	const logo = document.querySelector('.logo');
 	const main = document.querySelector('.main');
-	const nav = document.querySelector('.header-nav')
+	const nav = document.querySelector('.header-nav');
 
 nav.addEventListener('click', (event) => {
 	const target = event.target;
@@ -26,4 +27,6 @@ nav.addEventListener('click', (event) => {
 		main.innerHTML = '';
 		showTasksFrames();
 	})
+
+	openModalAuth();
 }
