@@ -1,6 +1,7 @@
+import { settingsHandler } from "../../settings/settingsHandler";
 import { closeModal } from "./closeModal";
 
-export function openModal(element, content) {
+export function openModal(element, content, handler) {
 	const overlay = document.querySelector('.overlay');
 	const modalContent = document.querySelector('.modal-content');
 	
@@ -9,7 +10,9 @@ export function openModal(element, content) {
 
 		modalContent.innerHTML = '';
 		modalContent.innerHTML = content;
+
+		handler();
 	});
-	
+
 	closeModal();
 }
