@@ -11,8 +11,9 @@ export function registrationHandler() {
 
 	registrationButton.addEventListener('click', event => {
 		event.preventDefault();
-		const email = document.querySelector('.email').value;
-		const password= document.querySelector('.password').value;
+		const email = document.querySelector('.email');
+		const password= document.querySelector('.password');
+
 		initializeApp(
 			{
 				apiKey: "AIzaSyAuzFKnVdCA3v64P0Ea6FuV6aJDVKC-S6E",
@@ -23,11 +24,18 @@ export function registrationHandler() {
 				appId: "1:453985294089:web:5c97598f8abe0e0bb7e5d8"
 			}
 	);
-	const auth = getAuth();
-	createUserWithEmailAndPassword(auth, email, password).then((userCredential) => {
-			const user = userCredential.user;
-			console.log(user);
-		});
+
+	if(email.value && password.value) {
+		const auth = getAuth();
+		if(email.value.length < 6) {
+			alert('Пароль должен содержать минимум 6 символов')
+		}
+		createUserWithEmailAndPassword(auth, email.value, password.value).then((userCredential) => {
+				const user = userCredential.user;
+			});
+	}else {
+		alert('Неверные данные')
+		}	
 	})
 
 	returnButton.addEventListener('click', event => {
