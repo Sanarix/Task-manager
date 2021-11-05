@@ -1,7 +1,7 @@
 export function registration() {
 	return `
 		<div class="registration">
-			<h3 class="registration-header">Registration</h3>
+			<h3 class="modal-header registration-header">Registration</h3>
 			<div class="inputs">
 				<input type="text" class="email" placeholder="Email">
 				<input type="password" class="password" placeholder="Password">

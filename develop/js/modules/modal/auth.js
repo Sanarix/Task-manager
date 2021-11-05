@@ -1,7 +1,7 @@
 export function auth() {
 	return `
 		<div class="auth">
-			<h3 class="auth-header">Log in</h3>
+			<h3 class="modal-header auth-header">Log in</h3>
 			<div class="inputs">
 				<input type="text" class="email" placeholder="Email">
 				<input type="password" class="password" placeholder="Password">
