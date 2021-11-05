@@ -4,6 +4,6 @@ import { authHandler } from '../../auth/authHandler';
 
 
 export function openModalAuth() {
-	const loginButton = document.querySelector('.log-in');
+	const loginButton = document.querySelector('.sign-in');
 	openModal(loginButton, auth(), authHandler);
 }

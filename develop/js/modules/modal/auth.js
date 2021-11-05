@@ -11,7 +11,7 @@ export function auth() {
 					<button class="button-social button-social_github"><img src="./img/socials/social-github.svg" alt="GitHub"></button>
 					<button class="button-social button-social_google"><img src="./img/socials/social-google.svg" alt="Google"></button>
 				</div>
-				<button class="auth-button auth-button_enter">Enter</button>
+				<button class="auth-button auth-button_enter">Sign in</button>
 				<button class="auth-button auth-button_register">Register</button>
 	</div>
 	`

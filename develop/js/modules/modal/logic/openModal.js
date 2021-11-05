@@ -1,4 +1,3 @@
-import { settingsHandler } from "../../settings/settingsHandler";
 import { closeModal } from "./closeModal";
 
 export function openModal(element, content, handler) {
@@ -11,7 +10,9 @@ export function openModal(element, content, handler) {
 		modalContent.innerHTML = '';
 		modalContent.innerHTML = content;
 
-		handler();
+		if(handler) {
+			handler();
+		}
 	});
 
 	closeModal();
