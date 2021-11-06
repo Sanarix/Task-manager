@@ -21,4 +21,5 @@ export function auth() {
 	`
 
 	openModal(false, modalHTML, authHandler);
+	console.log('auth is working');
 }
