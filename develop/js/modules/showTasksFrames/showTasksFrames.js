@@ -3,6 +3,8 @@ import { openModalNewTask } from "../modal/logic/openModalNewTask";
 import { renderPages } from "../pages/renderPages";
 
 export function showTasksFrames() {
+	const main = document.querySelector('.main');
+	const logo = document.querySelector('.logo');
 	const container = document.querySelector('.main');
 	
 	const newTaskframe = new taskFrame(

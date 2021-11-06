@@ -1,15 +1,16 @@
 import { openModal } from "../modal/logic/openModal";
 import { authHandler } from "./authHandler";
-import { auth } from "../modal/auth";
 import { initializeApp } from 'firebase/app';
-import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { isAuth } from "./isAuth";
+import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 
 
 export function registrationHandler() {
 	const registrationButton = document.querySelector('.registration-button_register');
 	const returnButton = document.querySelector('.registration-button_return');
+	const signOutButton = document.querySelector('.sign-out');
 
-	registrationButton.addEventListener('click', event => {
+	registrationButton.addEventListener('click', async event => {
 		event.preventDefault();
 		const email = document.querySelector('.email');
 		const password= document.querySelector('.password');
@@ -26,17 +27,22 @@ export function registrationHandler() {
 	);
 
 	if(email.value && password.value) {
-		const auth = getAuth();
+		const auth =  getAuth();
+
 		if(email.value.length < 6) {
 			alert('Пароль должен содержать минимум 6 символов')
 		}
-		createUserWithEmailAndPassword(auth, email.value, password.value).then((userCredential) => {
-				const user = userCredential.user;
-			});
-	}else {
-		alert('Неверные данные')
-		}	
+
+		await createUserWithEmailAndPassword(auth, email.value, password.value).then(() => {
+			isAuth();
+		})
+		.catch((error) => {
+			const errorCode = error.code;
+			const errorMessage = error.message;
+		});
+		}
 	})
+
 
 	returnButton.addEventListener('click', event => {
 		event.preventDefault();
