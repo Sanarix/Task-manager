@@ -1,5 +1,9 @@
+import { openModal } from "./logic/openModal";
+import { authHandler } from "../auth/authHandler";
+
 export function auth() {
-	return `
+
+	const modalHTML = `
 		<div class="auth">
 			<h3 class="modal-header auth-header">Log in</h3>
 			<div class="inputs">
@@ -15,4 +19,6 @@ export function auth() {
 				<button class="auth-button auth-button_register">Register</button>
 	</div>
 	`
+
+	openModal(false, modalHTML, authHandler);
 }
