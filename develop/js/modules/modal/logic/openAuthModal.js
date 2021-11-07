@@ -1,7 +1,6 @@
-import { authHandler } from "../../auth/authHandler.js";
+import { authHandler } from '../../auth/authHandler.js'
 
 export function openAuthModal(auth) {
-	const authButton = document.querySelector('.sign-in');
 	const overlay = document.querySelector('.overlay');
 	const modalContent = document.querySelector('.modal-content');
 
@@ -21,11 +20,10 @@ export function openAuthModal(auth) {
 				<button class="auth-button auth-button_register">Register</button>
 	</div>
 	`
-	authButton.addEventListener('click', event => {
-		event.preventDefault();
+
 		overlay.classList.add('visible');
 		modalContent.innerHTML = '';
 		modalContent.innerHTML = modalHTML;
 		authHandler(auth);
-	})
+
 }

@@ -1,5 +1,5 @@
 import { signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
-import { openModalRegistration } from "../modal/logic/openModalRegistration.js";
+import { openRegistrationModal } from "../modal/logic/openRegistrationModal.js";
 
 export function authHandler(auth) {
 		const authGoogle = document.querySelector('.button-social_google');
@@ -26,6 +26,6 @@ export function authHandler(auth) {
 			signInWithEmailAndPassword(auth, email, password);
 		})
 
-	openModalRegistration();
+	openRegistrationModal(auth);
 
 }

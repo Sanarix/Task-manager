@@ -1,6 +1,6 @@
 import { closeModal } from "./closeModal.js";
 
-export function openModal(element, content, handler) {
+export function openModal(element, content, handler, handlerParam) {
 	const overlay = document.querySelector('.overlay');
 	const modalContent = document.querySelector('.modal-content');
 
@@ -11,7 +11,7 @@ export function openModal(element, content, handler) {
 		modalContent.innerHTML = content;
 
 		if(handler) {
-			handler();
+			handler(handlerParam);
 		}
 	}
 
