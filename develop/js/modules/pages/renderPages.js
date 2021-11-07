@@ -1,10 +1,9 @@
 import { settings } from "./settings";
 import { about } from "./about";
 import { contacts } from "./contacts";
-import { auth } from "../modal/auth";
 
 export function renderPages() {
-	const pages = [settings, about, contacts, auth];
+	const pages = [settings, about, contacts];
 	const main = document.querySelector('.main');
 	const nav = document.querySelector('.header-nav');
 
@@ -16,7 +15,7 @@ export function renderPages() {
 		}else {	
 			for (let page of pages) {
 				if (target.dataset.name == page.name) {
-						main.innerHTML = page() || '';
+						main.innerHTML = page();
 				}
 			}
 		}

@@ -1,8 +1,10 @@
-import { openModal } from "./logic/openModal";
-import { authHandler } from "../auth/authHandler";
 
-export function auth() {
+import { authHandler } from "../../auth/authHandler";
 
+export function openAuthModal() {
+	const authButton = document.querySelector('.sign-in');
+	const overlay = document.querySelector('.overlay');
+	const modalContent = document.querySelector('.modal-content');
 	const modalHTML = `
 		<div class="auth">
 			<h3 class="modal-header auth-header">Log in</h3>
@@ -19,6 +21,11 @@ export function auth() {
 				<button class="auth-button auth-button_register">Register</button>
 	</div>
 	`
-
-	openModal(false, modalHTML, authHandler);
+	authButton.addEventListener('click', event => {
+		event.preventDefault();
+		overlay.classList.add('visible');
+		modalContent.innerHTML = '';
+		modalContent.innerHTML = modalHTML;
+		authHandler();
+	})
 }

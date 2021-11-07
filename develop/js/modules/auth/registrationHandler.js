@@ -1,7 +1,6 @@
 import { openModal } from "../modal/logic/openModal";
 import { authHandler } from "./authHandler";
 import { initializeApp } from 'firebase/app';
-import { auth } from '../modal/auth'
 import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";
 
 
@@ -18,6 +17,5 @@ export function registrationHandler() {
 
 	returnButton.addEventListener('click', event => {
 		event.preventDefault();
-		auth();
 	})
 }
