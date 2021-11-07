@@ -1,4 +1,4 @@
-import { openModal } from "../modal/logic/openModal";
+import { openModal } from "../modal/logic/openModal.js";
 import { authHandler } from "./authHandler";
 import { initializeApp } from 'firebase/app';
 import { getAuth, createUserWithEmailAndPassword} from "firebase/auth";

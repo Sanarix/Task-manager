@@ -1,5 +1,4 @@
-
-import { authHandler } from "../../auth/authHandler";
+import { authHandler } from "../../auth/authHandler.js";
 
 export function openAuthModal() {
 	const authButton = document.querySelector('.sign-in');

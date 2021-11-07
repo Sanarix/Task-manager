@@ -1,4 +1,4 @@
-import { closeModal } from "./closeModal";
+import { closeModal } from "./closeModal.js";
 
 export function openModal(element, content, handler) {
 	const overlay = document.querySelector('.overlay');
