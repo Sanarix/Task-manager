@@ -1,6 +1,6 @@
-import { settings } from "./settings";
-import { about } from "./about";
-import { contacts } from "./contacts";
+import { settings } from "./settings.js";
+import { about } from "./about.js";
+import { contacts } from "./contacts.js";
 
 export function renderPages() {
 	const pages = [settings, about, contacts];
