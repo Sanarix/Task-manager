@@ -1,7 +1,7 @@
 import '../css/index.css';
 import { renderPages } from './modules/pages/renderPages.js';
 import { openAuthModal } from './modules/modal/logic/openAuthModal.js'
-import { changeSignButton } from './functions/changeSignButton';
+import { changeSignButton } from './functions/changeSignButton.js';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { initializeApp } from '@firebase/app';
 
@@ -20,6 +20,7 @@ const auth = getAuth();
 
 renderPages();
 openAuthModal(auth);
+
 onAuthStateChanged(auth, user => {
 	if(user) {
 		changeSignButton(true);
