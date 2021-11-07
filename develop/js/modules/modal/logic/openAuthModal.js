@@ -1,9 +1,10 @@
 import { authHandler } from "../../auth/authHandler.js";
 
-export function openAuthModal() {
+export function openAuthModal(auth) {
 	const authButton = document.querySelector('.sign-in');
 	const overlay = document.querySelector('.overlay');
 	const modalContent = document.querySelector('.modal-content');
+
 	const modalHTML = `
 		<div class="auth">
 			<h3 class="modal-header auth-header">Log in</h3>
@@ -25,6 +26,6 @@ export function openAuthModal() {
 		overlay.classList.add('visible');
 		modalContent.innerHTML = '';
 		modalContent.innerHTML = modalHTML;
-		authHandler();
+		authHandler(auth);
 	})
 }
