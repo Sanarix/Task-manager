@@ -16,7 +16,7 @@ export function renderPages() {
 		}else {	
 			for (let page of pages) {
 				if (target.dataset.name == page.name) {
-						main.innerHTML = page();
+						main.innerHTML = page() || '';
 				}
 			}
 		}
