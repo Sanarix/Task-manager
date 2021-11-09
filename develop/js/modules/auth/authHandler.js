@@ -6,8 +6,8 @@ export function authHandler(auth) {
 		const authGithub = document.querySelector('.button-social_github');
 		const authEmail = document.querySelector('.auth-button_enter');
 
-		const email = document.querySelector('.email').textContent;
-		const password = document.querySelector('.password').textContent;
+		const email = document.querySelector('.email').value;
+		const password = document.querySelector('.password').value;
 
 		authGoogle.addEventListener('click', async event => {
 			event.preventDefault();
@@ -21,11 +21,18 @@ export function authHandler(auth) {
 			const userData = await signInWithPopup(auth, provider);
 		})
 
-		authEmail.addEventListener('click', event => {
+		authEmail.addEventListener('click', async event => {
 			event.preventDefault();
-			signInWithEmailAndPassword(auth, email, password);
+			await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
+				const user = userCredential.user;
+				console.log(user);
+			}).catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log(errorCode);
+				console.log(errorMessage);
+			});
 		})
-
 	openRegistrationModal(auth);
 
 }
