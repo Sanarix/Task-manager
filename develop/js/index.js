@@ -5,7 +5,7 @@ import { closeModal } from './modules/modal/logic/closeModal.js';
 import { changeSignButton } from './functions/changeSignButton.js';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from './modules/firebaseConfig.js';
+import { firebaseConfig } from './modules/realtimeDatabase.js';
 
 const initApp = initializeApp({
 	apiKey: "AIzaSyAuzFKnVdCA3v64P0Ea6FuV6aJDVKC-S6E",
