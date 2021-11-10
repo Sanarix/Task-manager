@@ -6,6 +6,7 @@ import { changeSignButton } from './functions/changeSignButton.js';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { firebaseConfig } from './modules/realtimeDatabase.js';
+import { showTasksFrames } from './modules/showTasksFrames/showTasksFrames';
 
 const initApp = initializeApp({
 	apiKey: "AIzaSyAuzFKnVdCA3v64P0Ea6FuV6aJDVKC-S6E",
@@ -19,7 +20,7 @@ const initApp = initializeApp({
 
 const auth = getAuth();
 
-renderPages();
+renderPages(auth);
 buttonSignInListener(auth);
 firebaseConfig(initApp);
 
@@ -28,6 +29,7 @@ onAuthStateChanged(auth, user => {
 	if(user) {
 		changeSignButton(true, auth);
 		closeModal(true);
+		showTasksFrames();
 	}else {
 		changeSignButton(false);
 	}

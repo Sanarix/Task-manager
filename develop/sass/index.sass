@@ -15,6 +15,7 @@ body
 	.logo
 		font-size: 2em
 		font-weight: 500
+		user-select: none
 		cursor: pointer
 
 	&-nav
@@ -55,6 +56,7 @@ body
 	height: 550px
 	border: 3px solid #0c1217
 	border-radius: 3px
+	padding: 2vh
 	&_img
 		transition-duration: 250ms
 		opacity: 0.5
@@ -85,6 +87,30 @@ body
 	color: orange
 .finished-task
 	color: grey
+
+.contains-tasks
+	display: flex
+	flex-direction: column
+	align-items: center
+	justify-content: flex-start
+
+.task-card
+	border: 3px solid black
+	border-radius: 3px
+	margin-top: 2vh
+	color: black
+	&_header
+		display: flex
+		align-items: center
+		justify-content: center
+		margin: 0
+		padding: 1.5vh
+		border-bottom: 1px solid black
+	&_text
+		display: flex
+		align-items: center
+		justify-content: center
+		padding: 1vh
 
 .settings-container
 	width: 40%
