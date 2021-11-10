@@ -6,9 +6,6 @@ export function authHandler(auth) {
 		const authGithub = document.querySelector('.button-social_github');
 		const authEmail = document.querySelector('.auth-button_enter');
 
-		const email = document.querySelector('.email').value;
-		const password = document.querySelector('.password').value;
-
 		authGoogle.addEventListener('click', async event => {
 			event.preventDefault();
 			const provider = new GoogleAuthProvider();
@@ -23,6 +20,9 @@ export function authHandler(auth) {
 
 		authEmail.addEventListener('click', async event => {
 			event.preventDefault();
+			const email = document.querySelector('.email').value;
+			const password = document.querySelector('.password').value;
+			
 			await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
 				const user = userCredential.user;
 				console.log(user);
