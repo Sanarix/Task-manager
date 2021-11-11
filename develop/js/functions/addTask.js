@@ -10,6 +10,9 @@ export function addTask() {
 		const taskText = document.querySelector('.task-text').value;
 		const task = taskNode(taskTitle, taskText);
 		for (let item of newTaskFrame.children) {
+			if(!taskTitle && !taskText) {
+				console.log('Для создания задачи нужен заголовок');
+			}
 			if(item.classList.contains('task-frame_img')) {
 				newTaskFrame.innerHTML = '';
 				newTaskFrame.classList.add('contains-tasks');
