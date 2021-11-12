@@ -57,6 +57,7 @@ body
 	border: 3px solid #0c1217
 	border-radius: 3px
 	padding: 2vh
+	overflow-y: auto
 	&_img
 		transition-duration: 250ms
 		opacity: 0.5
@@ -69,9 +70,11 @@ body
 		transform: scale(1.5)
 
 .new-task-frame
+	position: relative
 	display: flex
 	align-items: center
 	justify-content: center
+	
 	&:hover
 		cursor: pointer
 
@@ -95,23 +98,28 @@ body
 	justify-content: flex-start
 
 .task-card
-	width: 100%
+	position: relative
+	width: 95%
 	border: 3px solid black
 	border-radius: 3px
 	margin-top: 2vh
 	color: black
 	&_header
 		display: flex
+		overflow: hidden
+		word-break: break-all
 		align-items: center
 		justify-content: center
 		margin: 0
 		padding: 1.5vh
 		border-bottom: 1px solid black
 	&_text
-		display: flex
-		align-items: center
-		justify-content: center
+		align: right
+		overflow: hidden
+		word-break: break-all
+		max-width: 100%
 		padding: 1vh
+		white-space: pre-line
 
 .settings-container
 	width: 40%
@@ -226,6 +234,7 @@ body
 		height: 10vh
 		resize: none
 		border: 2px solid black
+		white-space: pre
 
 .vertical-line
 	height: 100%
@@ -239,6 +248,7 @@ body
 	border-left: 1px solid black
 	padding: 1vh
 	padding-bottom: 50%
+	user-select: none
 .btn-ok, .btn-nok
 	display: flex
 	align-items: center
