@@ -5,8 +5,10 @@ import { closeModal } from './modules/modal/logic/closeModal.js';
 import { changeSignButton } from './functions/changeSignButton.js';
 import { getAuth, onAuthStateChanged } from '@firebase/auth';
 import { initializeApp } from 'firebase/app';
-import { firebaseConfig } from './modules/realtimeDatabase.js';
+import { realtimeDatabase } from './modules/realtimeDatabase.js';
 import { showTasksFrames } from './modules/showTasksFrames/showTasksFrames';
+import { getTasks } from './functions/task/getTasks';
+import { renderTasksInFrame } from './functions/task/renderTasksInFrame';
 
 const initApp = initializeApp({
 	apiKey: "AIzaSyAuzFKnVdCA3v64P0Ea6FuV6aJDVKC-S6E",
@@ -22,14 +24,14 @@ const auth = getAuth();
 
 renderPages(auth);
 buttonSignInListener(auth);
-firebaseConfig(initApp);
-
+const db = realtimeDatabase(initApp);
 
 onAuthStateChanged(auth, user => {
 	if(user) {
 		changeSignButton(true, auth);
 		closeModal(true);
 		showTasksFrames();
+		getTasks(db);
 	}else {
 		changeSignButton(false);
 	}

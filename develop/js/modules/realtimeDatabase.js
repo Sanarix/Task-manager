@@ -1,5 +1,6 @@
-import { getDatabase } from 'firebase/database';
+import { getDatabase} from 'firebase/database';
 
-export function firebaseConfig(app) {
-	const database = getDatabase(app);
+export function realtimeDatabase(app) {
+	const db = getDatabase(app);
+	return db
 }
