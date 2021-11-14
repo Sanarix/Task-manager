@@ -8,7 +8,7 @@ import { initializeApp } from 'firebase/app';
 import { realtimeDatabase } from './modules/realtimeDatabase.js';
 import { showTasksFrames } from './modules/showTasksFrames/showTasksFrames';
 import { getTasks } from './functions/task/getTasks';
-import { renderTasksInFrame } from './functions/task/renderTasksInFrame';
+
 
 const initApp = initializeApp({
 	apiKey: "AIzaSyAuzFKnVdCA3v64P0Ea6FuV6aJDVKC-S6E",
