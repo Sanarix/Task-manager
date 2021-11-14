@@ -30,4 +30,5 @@ export function showTasksFrames() {
 	newTaskframe.render();
 	progressTaskFrame.render();
 	finishTaskFrame.render();
+	openModalNewTask();
 }
