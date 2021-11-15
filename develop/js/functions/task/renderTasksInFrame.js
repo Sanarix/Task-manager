@@ -4,5 +4,5 @@ export function renderTasksInFrame(element, selector) {
 		throw new Error('renderTasksInFrame must contain 2 args');
 	}
 
-	document.querySelector(selector).append(element);
+	document.querySelector(selector).prepend(element);
 }
