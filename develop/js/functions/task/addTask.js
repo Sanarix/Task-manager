@@ -1,7 +1,8 @@
 import { taskNode } from "./taskNode";
 import { closeModal } from "../../modules/modal/logic/closeModal";
+import { ref, push, set } from "@firebase/database";
 
-export function addTask() {
+export function addTask(database) {
 	const addTaskButton = document.querySelector('.btn-ok');
 	const newTaskFrame = document.querySelector('.new-task-frame');
 
@@ -9,23 +10,26 @@ export function addTask() {
 		event.preventDefault();
 		const taskHeader = document.querySelector('.title').value;
 		const taskText = document.querySelector('.task-text').value;
-		const task = taskNode(taskHeader, taskText);
+		const dbKeyPosition = ref(database, 'tasks');
+		const newTaskKey = push(dbKeyPosition).key;
+		const task = taskNode(newTaskKey, {taskHeader, taskText});
 
-		for (let item of newTaskFrame.children) {
-
-			if(!taskHeader && !taskText) {
-				console.log('Для создания задачи нужен заголовок');
-			}
-
-			if(item.classList.contains('task-frame_img')) {
-				newTaskFrame.innerHTML = '';
-				newTaskFrame.classList.add('contains-tasks');
-				newTaskFrame.append(task);
-			}else{
-				newTaskFrame.append(task);
-			}
+		if(!taskHeader && !taskText) {
+			console.log('Для создания задачи нужен заголовок');
 		}
-		
+
+		newTaskFrame.prepend(task);
 		closeModal(true);
+
+		// Push in db
+		const uid = Date.now();
+		const taskData = {
+					"taskHeader": taskHeader,
+					"taskText": taskText,
+					"userName": "",
+					uid
+			}
+			
+			set(ref(database, `tasks/${newTaskKey}`), taskData);
 	})
 }

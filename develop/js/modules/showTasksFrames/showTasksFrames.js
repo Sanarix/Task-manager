@@ -1,7 +1,7 @@
 import { taskFrame } from "./taskFrame.js";
 import { openModalNewTask } from "../modal/logic/openModalNewTask.js";
 
-export function showTasksFrames() {
+export function showTasksFrames(db) {
 	const container = document.querySelector('.main');
 	container.innerHTML = '';
 	
@@ -30,5 +30,5 @@ export function showTasksFrames() {
 	newTaskframe.render();
 	progressTaskFrame.render();
 	finishTaskFrame.render();
-	openModalNewTask();
+	openModalNewTask(db);
 }

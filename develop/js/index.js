@@ -30,7 +30,7 @@ onAuthStateChanged(auth, user => {
 	if(user) {
 		changeSignButton(true, auth);
 		closeModal(true);
-		showTasksFrames();
+		showTasksFrames(db);
 		getTasks(db);
 	}else {
 		changeSignButton(false);
