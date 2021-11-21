@@ -1,9 +1,9 @@
-export function createNewTask() {
+export function newTask(taskHeader, taskText) {
 	return `
 	<div class="newTask">
 		<div class="text-area">
-			<input type="text" class="title" placeholder="Title">
-			<textarea class="task-text" placeholder="Task" autocapitalize="sentences"></textarea>
+			<input type="text" class="title" placeholder="${taskHeader || 'Title'}">
+			<textarea class="task-text" placeholder="${taskText || 'Task'}" autocapitalize="sentences"></textarea>
 		</div>
 		<div class="vertical-line">
 			<div class="buttons">

@@ -1,3 +1,5 @@
+import { openModalChangeTask } from "../../modules/modal/logic/openModalChangeTask";
+
 export function renderTasksInFrame(element, selector) {	
 
 		if(!element || !selector) {
@@ -14,7 +16,10 @@ export function renderTasksInFrame(element, selector) {
 			}
 		}
 
-		
+		element.addEventListener('click', event => {
+			event.stopPropagation();
+			openModalChangeTask(element);
+		})
 		
 		selectorItem.prepend(element);
 }
