@@ -1,10 +1,9 @@
 import { settings } from "./settings.js";
 import { about } from "./about.js";
 import { contacts } from "./contacts.js";
-import { showTasksFrames } from "../showTasksFrames/showTasksFrames.js";
-import { onAuthStateChanged } from "@firebase/auth";
+import { isAuth } from "../../functions/isAuth.js";
 
-export function renderPages(auth) {
+export function renderPages(auth, db) {
 	const pages = [settings, about, contacts];
 	const main = document.querySelector('.main');
 	const nav = document.querySelector('.header-nav');
@@ -12,11 +11,7 @@ export function renderPages(auth) {
 
 	logo.addEventListener('click', event => {
 		event.preventDefault();
-		onAuthStateChanged(auth, user => {
-			if(user) {
-				showTasksFrames();
-			} 
-		})
+		isAuth(auth, db);
 	})
 
 	nav.addEventListener('click', (event) => {

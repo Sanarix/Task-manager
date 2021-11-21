@@ -1,13 +1,10 @@
 import '../css/index.css';
 import { renderPages } from './modules/pages/renderPages.js';
 import { buttonSignInListener } from './modules/modal/logic/ButtonSignListener.js';
-import { closeModal } from './modules/modal/logic/closeModal.js';
-import { changeSignButton } from './functions/changeSignButton.js';
-import { getAuth, onAuthStateChanged } from '@firebase/auth';
+import { getAuth} from '@firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { realtimeDatabase } from './modules/realtimeDatabase.js';
-import { showTasksFrames } from './modules/showTasksFrames/showTasksFrames';
-import { getTasks } from './functions/task/getTasks';
+import { isAuth } from './functions/isAuth';
 
 
 const initApp = initializeApp({
@@ -21,18 +18,8 @@ const initApp = initializeApp({
 })
 
 const auth = getAuth();
-
-renderPages(auth);
-buttonSignInListener(auth);
 const db = realtimeDatabase(initApp);
 
-onAuthStateChanged(auth, user => {
-	if(user) {
-		changeSignButton(true, auth);
-		closeModal(true);
-		showTasksFrames(db);
-		getTasks(db);
-	}else {
-		changeSignButton(false);
-	}
-})
+renderPages(auth, db);
+buttonSignInListener(auth);
+isAuth(auth, db);
