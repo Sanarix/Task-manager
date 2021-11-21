@@ -8,8 +8,8 @@ export function addTask(database) {
 
 	addTaskButton.addEventListener('click', event => {
 		event.preventDefault();
-		const taskHeader = document.querySelector('.title').value;
-		const taskText = document.querySelector('.task-text').value;
+		const taskHeader = document.querySelector('.title').textContent.trim();
+		const taskText = document.querySelector('.task-text').textContent.trim();
 		const dbKeyPosition = ref(database, 'tasks');
 		const newTaskKey = push(dbKeyPosition).key;
 		const task = taskNode(newTaskKey, {taskHeader, taskText});

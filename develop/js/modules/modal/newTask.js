@@ -2,8 +2,8 @@ export function newTask(taskHeader, taskText) {
 	return `
 	<div class="newTask">
 		<div class="text-area">
-			<input type="text" class="title" placeholder="${taskHeader || 'Title'}">
-			<textarea class="task-text" placeholder="${taskText || 'Task'}" autocapitalize="sentences"></textarea>
+			<div class="title" contenteditable>${taskHeader || 'Title'}</div>
+			<div class="task-text" contenteditable>${taskText || 'Task'}</div>
 		</div>
 		<div class="vertical-line">
 			<div class="buttons">

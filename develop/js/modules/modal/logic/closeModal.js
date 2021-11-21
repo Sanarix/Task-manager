@@ -7,7 +7,8 @@ export function closeModal(close) {
 	}
 
 	modal.addEventListener('click', event => {
-		if(event.target.contains(closeButton) || event.target.parentElement == closeButton) {
+		if(event.target == closeButton || event.target.parentElement == closeButton) {
+			console.dir(event.target);
 			modal.classList.remove('visible');
 		}else {
 			return
