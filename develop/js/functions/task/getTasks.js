@@ -3,8 +3,8 @@ import { renderTasksInFrame } from './renderTasksInFrame.js';
 import { taskNode } from './taskNode.js';
 import { getTasksInFrame } from './getTasksInFrame.js';
 
-export function getTasks(database) {
-	const tasks = ref(database, 'tasks');
+export function getTasks(db) {
+	const tasks = ref(db, 'tasks');
 	onValue(tasks, (snapshot) => {
 		const data = snapshot.val();
 		const tasksInFrame = getTasksInFrame();
@@ -20,7 +20,7 @@ export function getTasks(database) {
 				}
 			}
 
-			renderTasksInFrame(taskNode(keyPost, dataPost), '.new-task-frame');
+			renderTasksInFrame(taskNode(keyPost, dataPost), '.new-task-frame', db);
 		}
 	})
 }
