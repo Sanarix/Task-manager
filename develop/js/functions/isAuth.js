@@ -7,10 +7,11 @@ import { getTasks } from "./task/getTasks";
 export function isAuth(auth, db) {
 	onAuthStateChanged(auth, user => {
 		if(user) {
+			const uid = user.uid;
 			changeSignButton(true, auth);
 			closeModal(true);
-			showTasksFrames(db);
-			getTasks(db);
+			showTasksFrames(db, uid);
+			getTasks(db, uid);
 		}else {
 			changeSignButton(false);
 		}

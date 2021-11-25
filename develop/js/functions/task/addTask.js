@@ -2,15 +2,15 @@ import { taskNode } from "./taskNode";
 import { closeModal } from "../../modules/modal/logic/closeModal";
 import { ref, push, set } from "@firebase/database";
 
-export function addTask(database) {
+export function addTask({db, uid}) {
 	const addTaskButton = document.querySelector('.btn-ok');
 	const newTaskFrame = document.querySelector('.new-task-frame');
 
 	addTaskButton.addEventListener('click', event => {
 		event.preventDefault();
 		const taskHeader = document.querySelector('.title').textContent.trim();
-		const taskText = document.querySelector('.task-text').textContent.trim();
-		const dbKeyPosition = ref(database, 'tasks');
+		const taskText = document.querySelector('.task-text').textContent;
+		const dbKeyPosition = ref(db, `users/${uid}/tasks/new-task-frame`);
 		const newTaskKey = push(dbKeyPosition).key;
 		const task = taskNode(newTaskKey, {taskHeader, taskText});
 
@@ -22,14 +22,10 @@ export function addTask(database) {
 		closeModal(true);
 
 		// Push in db
-		const uid = Date.now();
 		const taskData = {
 					"taskHeader": taskHeader,
-					"taskText": taskText,
-					"userName": "",
-					uid
+					"taskText": taskText
 			}
-			
-			set(ref(database, `tasks/${newTaskKey}`), taskData);
+			set(ref(db, `users/${uid}/tasks/new-task-frame/${newTaskKey}`), taskData);
 	})
 }

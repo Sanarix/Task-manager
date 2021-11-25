@@ -1,6 +1,6 @@
 import { openModalChangeTask } from "../../modules/modal/logic/openModalChangeTask";
 
-export function renderTasksInFrame(element, selector, db) {	
+export function renderTasksInFrame(element, selector, db, uid) {	
 
 		if(!element || !selector) {
 			throw new Error('renderTasksInFrame must contain 2 args');
@@ -18,7 +18,7 @@ export function renderTasksInFrame(element, selector, db) {
 
 		element.addEventListener('click', event => {
 			event.stopPropagation();
-			openModalChangeTask(element, db);
+			openModalChangeTask(element, db, uid);
 		})
 		
 		selectorItem.prepend(element);

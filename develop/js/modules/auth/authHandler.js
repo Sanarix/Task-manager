@@ -23,9 +23,7 @@ export function authHandler(auth) {
 			const email = document.querySelector('.email').value;
 			const password = document.querySelector('.password').value;
 			
-			await signInWithEmailAndPassword(auth, email, password).then((userCredential) => {
-				const user = userCredential.user;
-				console.log(user);
+			await signInWithEmailAndPassword(auth, email, password).then(() => {
 			}).catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
@@ -33,6 +31,6 @@ export function authHandler(auth) {
 				console.log(errorMessage);
 			});
 		})
-	openRegistrationModal(auth);
 
+	openRegistrationModal(auth);
 }
