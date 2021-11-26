@@ -6,13 +6,15 @@ import { set, ref, remove } from "firebase/database";
 export function openModalChangeTask(element, db, uid) {
 	const elementID = element.dataset.id;
 	const parentElement = element.parentElement.classList[0];
-	const cardHeader = element.querySelector('.task-card_header').textContent.trim();
-	const cardText = element.querySelector('.task-card_text').textContent;
+	const cardHeader = element.querySelector('.task-card_header').
+	textContent.
+	trim();
+	const cardText = element.querySelector('.task-card_text').innerHTML.trim();
 
 	function updateTask() {
 			const task = document.querySelector('.newTask');
 			const header = task.querySelector('.title').textContent.trim();
-			const text = task.querySelector('.task-text').textContent;
+			const text = task.querySelector('.task-text').innerHTML.trim();
 			set(ref(db, `users/${uid}/tasks/${parentElement}/${elementID}`), {
 				"taskHeader": header,
 				"taskText": text
