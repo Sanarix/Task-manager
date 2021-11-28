@@ -5,7 +5,7 @@ import { showTasksFrames } from "../modules/showTasksFrames/showTasksFrames";
 import { getTasks } from "./task/getTasks";
 
 export function isAuth(auth, db) {
-	onAuthStateChanged(auth, user => {
+	onAuthStateChanged(auth, async user => {
 		if(user) {
 			const uid = user.uid;
 			changeSignButton(true, auth);
