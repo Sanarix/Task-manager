@@ -1,4 +1,5 @@
 import { openModalChangeTask } from "../../modules/modal/logic/openModalChangeTask";
+import { taskMenuHandler } from "./taskMenuHandler";
 
 export function renderTasksInFrame(element, selector, db, uid) {	
 
@@ -26,4 +27,5 @@ export function renderTasksInFrame(element, selector, db, uid) {
 		}
 		
 		selectorItem.prepend(element);
+		taskMenuHandler(element);
 }
