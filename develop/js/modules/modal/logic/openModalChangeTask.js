@@ -9,7 +9,8 @@ export function openModalChangeTask(element, db, uid) {
 	const cardHeader = element.querySelector('.task-card_header').
 	textContent.
 	trim();
-	const cardText = element.querySelector('.task-card_text').innerHTML.trim();
+	const cardText = element.querySelector('.task-card_text')? element.querySelector('.task-card_text').innerHTML.trim() :
+	'';
 
 	function updateTask() {
 			const task = document.querySelector('.newTask');
