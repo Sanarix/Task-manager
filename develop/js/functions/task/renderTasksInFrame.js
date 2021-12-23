@@ -21,11 +21,7 @@ export function renderTasksInFrame(element, selector, db, uid) {
 			event.stopPropagation();
 			openModalChangeTask(element, db, uid);
 		})
-
-		element.onmousedown = function(event) {
-
-		}
-		
+	
 		selectorItem.prepend(element);
 		taskMenuHandler(element);
 }
