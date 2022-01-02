@@ -126,8 +126,8 @@ body
 			padding: 0
 			img
 				margin: 0
-				padding: 0	
-	
+				padding: 0
+
 
 .settings-container
 	width: 40%
@@ -220,7 +220,7 @@ body
 	background-color: #fff
 
 .visible
-	display: inline-block
+	display: inline-block !important
 
 //modalNewTask
 .newTask
@@ -250,7 +250,7 @@ body
 		border: 2px solid black
 		resize: none
 		overflow: hidden
-		white-space: pre
+		white-space: pre-wrap
 		&:empty:before 
 			content: attr(data-placeholder)
 			color: grey

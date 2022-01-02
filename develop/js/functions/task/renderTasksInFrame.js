@@ -16,12 +16,7 @@ export function renderTasksInFrame(element, selector, db, uid) {
 				selectorItem.style.justifyContent = 'flex-start';
 			}
 		}
-
-		element.addEventListener('click', event => {
-			event.stopPropagation();
-			openModalChangeTask(element, db, uid);
-		})
 	
 		selectorItem.prepend(element);
-		taskMenuHandler(element);
+		taskMenuHandler(element, db, uid);
 }

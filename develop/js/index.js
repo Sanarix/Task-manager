@@ -6,7 +6,6 @@ import { initializeApp } from 'firebase/app';
 import { realtimeDatabase } from './modules/realtimeDatabase.js';
 import { isAuth } from './functions/isAuth';
 
-
 const initApp = initializeApp({
 	apiKey: "AIzaSyAuzFKnVdCA3v64P0Ea6FuV6aJDVKC-S6E",
 	authDomain: "task-manager-5c313.firebaseapp.com",

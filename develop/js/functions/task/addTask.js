@@ -13,6 +13,9 @@ export function addTask({db, uid}) {
 		const dbKeyPosition = ref(db, `users/${uid}/tasks/new-task-frame`);
 		const newTaskKey = push(dbKeyPosition).key;
 		const task = taskNode(newTaskKey, {taskHeader, taskText});
+		
+		const text = document.querySelector('.task-text');
+		console.log(text);
 
 		if(!taskHeader && !taskText) {
 			console.log('Для создания задачи нужен заголовок');
