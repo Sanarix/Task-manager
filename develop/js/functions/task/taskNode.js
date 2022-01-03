@@ -12,7 +12,6 @@ export function taskNode(key, {taskHeader, taskText,}) {
 			`
 	task.innerHTML = taskBody;
 	if (taskText) {
-		console.log(taskText);
 		const text = document.createElement('pre');
 		text.className = 'task-card_text';
 		text.textContent = taskText;
