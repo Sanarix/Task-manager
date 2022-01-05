@@ -3,7 +3,7 @@ export function newTask(taskHeader, taskText) {
 	<div class="newTask">
 		<div class="text-area">
 			<div class="title" contenteditable data-placeholder="Title">${taskHeader 
-			|| ''} </div>
+			|| ''}</div>
 			<pre class="task-text" contenteditable data-placeholder="Task">${taskText || ''}</pre>
 		</div>
 		<div class="vertical-line">

@@ -15,7 +15,6 @@ export function addTask({db, uid}) {
 		const task = taskNode(newTaskKey, {taskHeader, taskText});
 		
 		const text = document.querySelector('.task-text');
-		console.log(text);
 
 		if(!taskHeader && !taskText) {
 			console.log('Для создания задачи нужен заголовок');
