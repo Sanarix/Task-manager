@@ -8,8 +8,9 @@ export function newTask(taskHeader, taskText) {
 		</div>
 		<div class="vertical-line">
 			<div class="buttons">
-				<button class="btn-ok"><img src="./img/submit.svg" alt="submit" class="btn-img" title="Save"></button>
-				<button class="btn-nok"><img src="./img/clear.svg" alt="reset" class="btn-img" title="Clear"></button>
+				<button class="btn btn-submit"><img src="./img/submit.svg" alt="submit" class="btn-img" title="Save"></button>
+				<button class="btn btn-reset"><img src="./img/reset.svg" alt="reset" class="btn-img" title="Clear"></button>
+				<button class="btn btn-delete "><img src="./img/delete.svg" alt="delete" class="btn-img" title="Delete"></button>
 			</div>
 	</div>
 	`

@@ -3,7 +3,8 @@ import { closeModal } from "../../modules/modal/logic/closeModal";
 import { ref, push, set } from "@firebase/database";
 
 export function addTask({db, uid}) {
-	const addTaskButton = document.querySelector('.btn-ok');
+	const addTaskButton = document.querySelector('.btn-submit');
+	const resetButton = document.querySelector('.btn-reset');
 	const newTaskFrame = document.querySelector('.new-task-frame');
 
 	addTaskButton.addEventListener('click', event => {
@@ -13,8 +14,6 @@ export function addTask({db, uid}) {
 		const dbKeyPosition = ref(db, `users/${uid}/tasks/new-task-frame`);
 		const newTaskKey = push(dbKeyPosition).key;
 		const task = taskNode(newTaskKey, {taskHeader, taskText});
-		
-		const text = document.querySelector('.task-text');
 
 		if(!taskHeader && !taskText) {
 			console.log('Для создания задачи нужен заголовок');
@@ -29,5 +28,10 @@ export function addTask({db, uid}) {
 					"taskText": taskText
 			}
 			set(ref(db, `users/${uid}/tasks/new-task-frame/${newTaskKey}`), taskData);
+	})
+
+	resetButton.addEventListener('click', (event) => {
+		event.preventDefault();
+		const taskText = document.querySelector('.task-text').textContent = '';
 	})
 }

@@ -1,6 +1,6 @@
 import { openModal } from "./openModal";
 import { newTask } from "../newTask";
-import { updateTask } from "../../../functions/task/updateTAsk";
+import { updateTask } from "../../../functions/task/updateTask";
 import { deleteTask } from "../../../functions/task/deleteTask";
 
 export function openModalChangeTask(element, db, uid) {
@@ -14,8 +14,12 @@ export function openModalChangeTask(element, db, uid) {
 	
 	openModal(null, newTask(cardHeader ,cardText));
 
-	const buttonOk = document.querySelector('.btn-ok');
-	const buttonNok = document.querySelector('.btn-nok');
-	buttonOk.addEventListener('click', () => {updateTask(parentElement, elementID, db, uid)});
-	buttonNok.addEventListener('click', () => deleteTask(parentElement, elementID, db, uid));
+	const buttonSubmit = document.querySelector('.btn-submit');
+	const buttonDelete = document.querySelector('.btn-delete');
+	const buttonReset = document.querySelector('.btn-reset');
+	buttonSubmit.addEventListener('click', () => {updateTask(parentElement, elementID, db, uid)});
+	buttonDelete.addEventListener('click', () => deleteTask(parentElement, elementID, db, uid));
+	buttonReset.addEventListener('click', () => {
+		const taskText = document.querySelector('.task-text').textContent = '';
+	})
 }
