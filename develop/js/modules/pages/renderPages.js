@@ -1,7 +1,7 @@
 import { settings } from "./settings.js";
 import { about } from "./about.js";
 import { contacts } from "./contacts.js";
-import { isAuth } from "../../functions/isAuth.js";
+import { isAuth } from "../../functions/auth/isAuth.js";
 
 export function renderPages(auth, db) {
 	const pages = [settings, about, contacts];

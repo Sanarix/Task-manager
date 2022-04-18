@@ -5,7 +5,10 @@ import { ref, push, set } from "@firebase/database";
 export function addTask({db, uid}) {
 	const addTaskButton = document.querySelector('.btn-submit');
 	const resetButton = document.querySelector('.btn-reset');
+	const deleteButton = document.querySelector('.btn-delete');
 	const newTaskFrame = document.querySelector('.new-task-frame');
+
+	deleteButton.classList.add('hidden');
 
 	addTaskButton.addEventListener('click', event => {
 		event.preventDefault();
@@ -28,6 +31,8 @@ export function addTask({db, uid}) {
 					"taskText": taskText
 			}
 			set(ref(db, `users/${uid}/tasks/new-task-frame/${newTaskKey}`), taskData);
+
+			deleteButton.classList.remove('hidden');
 	})
 
 	resetButton.addEventListener('click', (event) => {

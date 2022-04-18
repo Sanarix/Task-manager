@@ -4,7 +4,7 @@ import { buttonSignInListener } from './modules/modal/logic/ButtonSignListener.j
 import { getAuth} from '@firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { realtimeDatabase } from './modules/realtimeDatabase.js';
-import { isAuth } from './functions/isAuth';
+import { isAuth } from './functions/auth/isAuth';
 
 const initApp = initializeApp({
 	apiKey: "AIzaSyAuzFKnVdCA3v64P0Ea6FuV6aJDVKC-S6E",
