@@ -1,6 +1,6 @@
 import '../css/index.css';
 import { renderPages } from './modules/pages/renderPages.js';
-import { buttonSignInListener } from './modules/modal/logic/ButtonSignListener.js';
+import { buttonLogInListener } from './modules/modal/logic/buttonLogInListener.js';
 import { getAuth} from '@firebase/auth';
 import { initializeApp } from 'firebase/app';
 import { realtimeDatabase } from './modules/realtimeDatabase.js';
@@ -20,5 +20,5 @@ const auth = getAuth();
 const db = realtimeDatabase(initApp);
 
 renderPages(auth, db);
-buttonSignInListener(auth);
+buttonLogInListener(auth);
 isAuth(auth, db);

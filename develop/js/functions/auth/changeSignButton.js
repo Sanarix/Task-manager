@@ -1,20 +1,20 @@
 import { signOut } from "@firebase/auth";
 
 export function changeSignButton(status, auth) {
-	const signInButton = document.querySelector('.sign-in');
-	const signOutButton = document.querySelector('.sign-out');
+	const logInButton = document.querySelector('.log-in');
+	const logOutButton = document.querySelector('.log-out');
 
 	if(status) {
-		signInButton.classList.remove('visible');
-		signOutButton.classList.add('visible');
-		signOutButton.addEventListener('click', event => {
+		logInButton.classList.remove('visible');
+		logOutButton.classList.add('visible');
+		logOutButton.addEventListener('click', event => {
 			event.preventDefault();
 			signOut(auth);
 			const container = document.querySelector('.main');
 			container.innerHTML = '';
 		})
 	}else {
-		signInButton.classList.add('visible');
-		signOutButton.classList.remove('visible');
+		logInButton.classList.add('visible');
+		logOutButton.classList.remove('visible');
 	}
 }

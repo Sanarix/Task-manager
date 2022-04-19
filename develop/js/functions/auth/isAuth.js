@@ -13,7 +13,7 @@ export function isAuth(auth, db) {
 			showTasksFrames(db, uid);
 			getTasks(db, uid);
 		}else {
-			changeSignButton(false);н
+			changeSignButton(false);
 		}
 	})
 }
