@@ -3,7 +3,7 @@ import { changeSignButton } from "./changeSignButton";
 import { closeModal } from "../../modules/modal/logic/closeModal";
 import { showTasksFrames } from "../../modules/showTasksFrames/showTasksFrames";
 import { getTasks } from "../task/getTasks";
-import { unregistered } from "../../modules/pages/unregistered";
+import { showUnregisteredPage } from "../../modules/showTasksFrames/showUnregisteredPage";
 
 export function isAuth(auth, db) {
 	onAuthStateChanged(auth, async user => {
@@ -14,7 +14,7 @@ export function isAuth(auth, db) {
 			showTasksFrames(db, uid);
 			getTasks(db, uid);
 		}else {
-			unregistered();
+			showUnregisteredPage();
 			changeSignButton(false);
 		}
 	})

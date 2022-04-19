@@ -39,11 +39,28 @@ body
 .main
 	display: flex
 	align-items: center
-	justify-content: space-around
+	justify-content: center
 	width: 80%
 	margin: auto
 	min-height: 60%
+	height: 100%
 	padding-bottom: 5%
+	&-button_login
+		position: absolute
+		top: 50%
+		left: 50%
+		transform: translate(-50%, -50%)
+		padding: 10px
+		width: 200px
+		height: 50px
+		background-color: #131c24
+		color: white
+		font-size: 1.5em
+		border: none
+		border-radius: 5px
+		&:hover
+			cursor: pointer
+			text-decoration: underline
 
 .frame
 	transition-duration: 150ms

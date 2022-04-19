@@ -1,6 +1,4 @@
 import { signOut } from "@firebase/auth";
-import { unregistered } from "../../modules/pages/unregistered";
-import { showUnregisteredPage } from "../../modules/showTasksFrames/showUnregisteredPage";
 
 export function changeSignButton(status, auth) {
 	const logInButton = document.querySelector('.log-in');
@@ -14,7 +12,6 @@ export function changeSignButton(status, auth) {
 			signOut(auth);
 			const container = document.querySelector('.main');
 			container.innerHTML = '';
-			showUnregisteredPage(unregistered());
 		})
 	}else {
 		logInButton.classList.add('visible');

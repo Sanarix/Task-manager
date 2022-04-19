@@ -1,4 +1,8 @@
-export function showUnregisteredPage (pageForm) {
+import { unregistered } from "../pages/unregistered";
+import { buttonLogInListener } from "../modal/logic/buttonLogInListener";
+
+export function showUnregisteredPage () {
 	const container = document.querySelector('.main');
-	container.innerHTML = pageForm;
+	container.innerHTML = unregistered();
+	buttonLogInListener();
 }

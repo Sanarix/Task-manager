@@ -1,7 +1,7 @@
 export function unregistered () {
 	return `
 		<div>
-		<button>Log in</button>
+		<button class="main-button_login log-in">Log in</button>
 		</div>
 	`
 }
