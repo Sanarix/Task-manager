@@ -1,7 +1,7 @@
 import { taskFrame } from "./taskFrame.js";
 import { openModalNewTask } from "../modal/logic/openModalNewTask.js";
 
-export function showTasksFrames(db, userUid) {
+export function showTasksFrames(db, userUid, unregistered) {
 	const container = document.querySelector('.main');
 	container.innerHTML = '';
 	
