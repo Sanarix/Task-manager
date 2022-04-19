@@ -20,6 +20,7 @@ export function addTask({db, uid}) {
 
 		if(!taskHeader && !taskText) {
 			console.log('Для создания задачи нужен заголовок');
+			return
 		}
 
 		newTaskFrame.prepend(task);
