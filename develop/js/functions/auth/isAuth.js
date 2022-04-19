@@ -14,7 +14,7 @@ export function isAuth(auth, db) {
 			showTasksFrames(db, uid);
 			getTasks(db, uid);
 		}else {
-			showUnregisteredPage();
+			showUnregisteredPage(auth);
 			changeSignButton(false);
 		}
 	})
