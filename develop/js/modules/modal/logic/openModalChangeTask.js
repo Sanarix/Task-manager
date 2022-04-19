@@ -12,7 +12,7 @@ export function openModalChangeTask(element, db, uid) {
 	const cardText = element.querySelector('.task-card_text')? element.querySelector('.task-card_text').innerHTML.trim() :
 	'';
 	
-	openModal(null, newTask(cardHeader ,cardText));
+	openModal(null, newTask(cardHeader ,cardText, 'Update task'));
 
 	const buttonSubmit = document.querySelector('.btn-submit');
 	const buttonDelete = document.querySelector('.btn-delete');
