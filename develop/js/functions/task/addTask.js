@@ -12,6 +12,7 @@ export function addTask({db, uid}) {
 
 	addTaskButton.addEventListener('click', event => {
 		event.preventDefault();
+		const taskHeaderField = document.querySelector('.title');
 		const taskHeader = document.querySelector('.title').textContent.trim();
 		const taskText = document.querySelector('.task-text').textContent;
 		const dbKeyPosition = ref(db, `users/${uid}/tasks/new-task-frame`);
@@ -19,7 +20,11 @@ export function addTask({db, uid}) {
 		const task = taskNode(newTaskKey, {taskHeader, taskText});
 
 		if(!taskHeader && !taskText) {
-			console.log('Для создания задачи нужен заголовок');
+			function borderHighlighting () {
+				taskHeaderField.style.border = '3px solid red';
+				setTimeout(()=>(taskHeaderField.style.border = '2px solid black'), 1500)
+			}
+			borderHighlighting();
 			return
 		}
 
@@ -38,6 +43,6 @@ export function addTask({db, uid}) {
 
 	resetButton.addEventListener('click', (event) => {
 		event.preventDefault();
-		const taskText = document.querySelector('.task-text').textContent = '';
+		document.querySelector('.task-text').textContent = '';
 	})
 }

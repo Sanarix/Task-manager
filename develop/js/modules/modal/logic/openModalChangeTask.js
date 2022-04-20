@@ -20,6 +20,6 @@ export function openModalChangeTask(element, db, uid) {
 	buttonSubmit.addEventListener('click', () => {updateTask(parentElement, elementID, db, uid)});
 	buttonDelete.addEventListener('click', () => deleteTask(parentElement, elementID, db, uid));
 	buttonReset.addEventListener('click', () => {
-		const taskText = document.querySelector('.task-text').textContent = '';
+		document.querySelector('.task-text').textContent = '';
 	})
 }
