@@ -4,13 +4,11 @@ export function moveTask(element, db, uid) {
 	const taskCard = element;
 	const taskCardId = element.dataset.id;
 	const main = document.querySelector('main');
-
+тзь 
 	taskCard.addEventListener('mousedown', event => {
 		event.preventDefault();
 		event.stopPropagation();
 		taskCard.classList.add('moving');
-		console.dir(taskCard);
-		console.log(taskCard.parentElement.offsetWidth);
 
 		moving(taskCard);
 	})
