@@ -5,53 +5,30 @@ export function moveTask(element, db, uid) {
 	const taskCardId = element.dataset.id;
 	const main = document.querySelector('main');
 
-	taskCard.addEventListener('mousedown', event => {
-		event.preventDefault();
-		event.stopPropagation();
-		taskCard.classList.add('moving');
+	taskCard.onmousedown = function(event) {
+		taskCard.style.position = 'absolute';
+		taskCard.style.zIndex = 1000;
+		document.body.append(taskCard);
+		moveAt(event.pageX, event.pageY);
 
-		moving(taskCard);
-	})
-
-	function moving(movingElement) {
-		function move(event) {
-			movingElement.style.top = `${event.clientX}px`;
-			movingElement.style.left = `${event.clientX}px`;
+		function moveAt(pageX, pageY) {
+			taskCard.style.left = pageX - taskCard.offsetWidth / 2 + 'px';
+			taskCard.style.top = pageY - taskCard.offsetHeight / 2 + 'px';
 		}
-		document.addEventListener('mousemove', (event) => move(event));
-		endingMove(movingElement, move);
+
+		function onMouseMove(event) {
+			moveAt(event.pageX, event.pageY);
+		}
+
+		document.addEventListener('mousemove', onMouseMove);
+
+		taskCard.onmouseup = function() {
+			document.removeEventListener('mousemove', onMouseMove);
+			taskCard.onmouseup = null;
+		};
+
+		taskCard.ondragstart = function() {
+			return false;
+		};
 	}
-
-	function endingMove(movingElement, move) {
-		document.addEventListener('mouseup', event=> {
-			event.preventDefault();
-			event.stopPropagation();
-			movingElement.classList.remove('moving');
-			document.removeEventListener('mousemove', (event) => move(event))
-			console.log('Зафиксировали элемент в другом фрейме');
-		})
-	}
-
-	// function readyToMove() {
-	// 	const movingTaskCard = taskCard;
-	// 	console.log(movingTaskCard);
-	// }
-	
-	// taskCard.addEventListener('mousedown', event => {
-	// 	event.stopPropagation();
-	// 	event.preventDefault();
-	// 	console.log('Начато перемещение');
-
-	// 	// Далее логика перемещения:
-	// 	// копируем задачу, вставляем в body, удаляем задачу из new-task-frame 
-	// 	// делаем так чтобы задача перемещалась за мышкой
-	// 	// при наведении на другой фрейм и отпускании мыши, добавляем задачу в тот фрейм на которым находится мышь.
-	// })
-
-	// main.addEventListener('mouseup', event => {
-	// 	event.stopPropagation();
-	// 	event.preventDefault();
-	// 	console.log('Перемещение закончено');
-	// })
-
 }
