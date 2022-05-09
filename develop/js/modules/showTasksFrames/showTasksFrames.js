@@ -7,7 +7,7 @@ export function showTasksFrames(db, userUid, unregistered) {
 	
 	const newTaskframe = new taskFrame(
 		container,
-		'new-task-frame task-frame',
+		'new-task-frame task-frame droppable',
 		'task-header new-task',
 		'New Task',
 		'./img/add-crist-in-circle.svg',
@@ -15,14 +15,14 @@ export function showTasksFrames(db, userUid, unregistered) {
 
 	const progressTaskFrame = new taskFrame(
 		container,
-		'progress-task-frame task-frame',
+		'progress-task-frame task-frame droppable',
 		'task-header task-in-progress',
 		'In progress',
 		);
 
 	const finishTaskFrame = new taskFrame(
 		container,
-		'finish-task-frame task-frame',
+		'finish-task-frame task-frame droppable',
 		'task-header finished-task',
 		'Finished',
 		);
