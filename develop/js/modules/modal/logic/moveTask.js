@@ -29,8 +29,10 @@ export function moveTask(element, db, uid) {
 		}
 
 		let currentDroppable = null;
+		let currentTaskFrame = null;
 
 		function onMouseMove(event) {
+			taskCard.style.backgroundColor = '#FFF0F5';
 			moveAt(event.pageX, event.pageY);
 
 			taskCardFantom.hidden = true;
@@ -42,14 +44,14 @@ export function moveTask(element, db, uid) {
 				if (currentDroppable != droppableBelow) {
 					if (currentDroppable) {
 						leaveDroppable(currentDroppable);
-						//TODO убрать hover
+						currentTaskFrame = null;
 					}
 
 					currentDroppable = droppableBelow;
 
 					if(currentDroppable) {
 						enterDroppable(currentDroppable);
-						//TODO сделать hover
+						currentTaskFrame = currentDroppable.className.split(' ')[0];
 					}
 				}
 		}
@@ -59,18 +61,21 @@ export function moveTask(element, db, uid) {
 
 		document.onmouseup = function() {
 		document.removeEventListener('mousemove', onMouseMove);
-		
-		const currentTaskFrame = currentDroppable.className.split(' ')[0];/*Фрейм над которым произошло отпускание клавиши мыши*/
-			if(metaData.taskCardParent != currentTaskFrame) {
+		taskCard.style.backgroundColor = 'inherit';
+
+			if(metaData.taskCardParent != currentTaskFrame &&
+				currentTaskFrame != null) {
 				taskCardFantom.hidden = true;
 				deleteTask(metaData.taskCardParent, taskCardId, db, uid);
+				/*TODO Добавление таска в выбранный фрейм */
 			} else {
 				taskCardFantom.hidden = true;
 				return
 			}
+
 			taskCard.onmouseup = null;
-			taskCard.onmousemove = null;
 			taskCard.onmousedown = null;
+			currentTaskFrame = null;
 		};
 
 		taskCard.ondragstart = function() {
@@ -78,7 +83,7 @@ export function moveTask(element, db, uid) {
 		};
 
 		function leaveDroppable(droppableElement) {
-			droppableElement.style.boxShadow = '';
+			droppableElement.style.boxShadow = null;
 		}
 
 		function enterDroppable(droppableElement) {

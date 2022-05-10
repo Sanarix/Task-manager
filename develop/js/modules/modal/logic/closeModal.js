@@ -6,11 +6,14 @@ export function closeModal(close) {
 		modal.classList.remove('visible');
 	}
 
-	modal.addEventListener('click', event => {
+	modal.addEventListener('click', (event) => handler(event))
+
+	function handler(event) {
 		if(event.target == closeButton || event.target.parentElement == closeButton) {
 			modal.classList.remove('visible');
 		}else {
 			return
 		}
-	})
+	}
+	modal.removeEventListener('click', (event) => handler(event))
 }
