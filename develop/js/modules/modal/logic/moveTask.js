@@ -2,24 +2,30 @@ import { deleteTask } from "../../../functions/task/deleteTask";
 
 export function moveTask(element, db, uid) {
 	const taskCard = element;
+	let taskCardFantom = taskCard.cloneNode(true);
 	const taskCardId = element.dataset.id;
+	let metaData = {};
 
 	taskCard.onmousedown = function(event) {
+		metaData = {
+			taskCardParent: taskCard.parentElement.className.split(' ')[0],
+		}
 		const taskCardStyles = taskCard.getBoundingClientRect();
 
-		taskCard.style.position = 'absolute';
+		taskCardFantom.style.position = 'absolute';
+		taskCardFantom.style.width = taskCardStyles.width + 'px';
+		taskCardFantom.style.height = taskCardStyles.height + 'px';
+
 		let shiftX = event.clientX - taskCardStyles.left;
 		let shiftY = event.clientY - taskCardStyles.top;
-		taskCard.style.width = taskCardStyles.width + 'px';
-		taskCard.style.height = taskCardStyles.height + 'px';
-		taskCard.style.zIndex = 1000;
+		taskCardFantom.style.zIndex = 1000;
 
-		document.body.append(taskCard);
+		document.body.append(taskCardFantom);
 		moveAt(event.pageX, event.pageY);
 
 		function moveAt(pageX, pageY) {
-			taskCard.style.left = pageX - shiftX + 'px';
-			taskCard.style.top = pageY - shiftY + 'px';
+			taskCardFantom.style.left = pageX - shiftX + 'px';
+			taskCardFantom.style.top = pageY - shiftY + 'px';
 		}
 
 		let currentDroppable = null;
@@ -27,32 +33,44 @@ export function moveTask(element, db, uid) {
 		function onMouseMove(event) {
 			moveAt(event.pageX, event.pageY);
 
-			taskCard.hidden = true;
+			taskCardFantom.hidden = true;
 			let elemBelow = document.elementFromPoint(event.clientX, event.clientY);
-			taskCard.hidden = false;
+			taskCardFantom.hidden = false;
 			if (!elemBelow) return;
 
 			let droppableBelow = elemBelow.closest('.droppable');
-			if (currentDroppable != droppableBelow) {
-				if (currentDroppable) {
-					leaveDroppable(currentDroppable);
-					/*TODO сделать визуальное выделение taskFram'а*/
-				}
+				if (currentDroppable != droppableBelow) {
+					if (currentDroppable) {
+						leaveDroppable(currentDroppable);
+						//TODO убрать hover
+					}
 
-				currentDroppable = droppableBelow;
+					currentDroppable = droppableBelow;
 
-				if(currentDroppable) {
-					enterDroppable(currentDroppable);
-					/*TODO Сделать функцию помещения задачи в таск фрейм */
+					if(currentDroppable) {
+						enterDroppable(currentDroppable);
+						//TODO сделать hover
+					}
 				}
-			}
 		}
+	
 
 		document.addEventListener('mousemove', onMouseMove);
 
-		taskCard.onmouseup = function() {
-			document.removeEventListener('mousemove', onMouseMove);
+		document.onmouseup = function() {
+		document.removeEventListener('mousemove', onMouseMove);
+		
+		const currentTaskFrame = currentDroppable.className.split(' ')[0];/*Фрейм над которым произошло отпускание клавиши мыши*/
+			if(metaData.taskCardParent != currentTaskFrame) {
+				taskCardFantom.hidden = true;
+				deleteTask(metaData.taskCardParent, taskCardId, db, uid);
+			} else {
+				taskCardFantom.hidden = true;
+				return
+			}
 			taskCard.onmouseup = null;
+			taskCard.onmousemove = null;
+			taskCard.onmousedown = null;
 		};
 
 		taskCard.ondragstart = function() {
@@ -60,13 +78,11 @@ export function moveTask(element, db, uid) {
 		};
 
 		function leaveDroppable(droppableElement) {
-			console.log('Вы покидаете элемент:');
-			console.log(droppableElement);
+			droppableElement.style.boxShadow = '';
 		}
 
 		function enterDroppable(droppableElement) {
-			console.log('Могу поместить задачу сюда:');
-			console.log(droppableElement);
+			droppableElement.style.boxShadow = '0 40px 20px rgba(0,0,0,0.5)';
 		}
 	}
 }

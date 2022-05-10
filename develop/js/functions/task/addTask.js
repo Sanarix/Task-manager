@@ -2,7 +2,7 @@ import { taskNode } from "./taskNode";
 import { closeModal } from "../../modules/modal/logic/closeModal";
 import { ref, push, set } from "@firebase/database";
 
-export function addTask({db, uid}) {
+export function addTask({db, uid, taskFrame}) {
 	const addTaskButton = document.querySelector('.btn-submit');
 	const resetButton = document.querySelector('.btn-reset');
 	const deleteButton = document.querySelector('.btn-delete');
@@ -15,7 +15,7 @@ export function addTask({db, uid}) {
 		const taskHeaderField = document.querySelector('.title');
 		const taskHeader = document.querySelector('.title').textContent.trim();
 		const taskText = document.querySelector('.task-text').textContent;
-		const dbKeyPosition = ref(db, `users/${uid}/tasks/new-task-frame`);
+		const dbKeyPosition = ref(db, `users/${uid}/tasks/${taskFrame || 'new-task-frame'}`);
 		const newTaskKey = push(dbKeyPosition).key;
 		const task = taskNode(newTaskKey, {taskHeader, taskText});
 
@@ -36,7 +36,7 @@ export function addTask({db, uid}) {
 					"taskHeader": taskHeader,
 					"taskText": taskText
 			}
-			set(ref(db, `users/${uid}/tasks/new-task-frame/${newTaskKey}`), taskData);
+			set(ref(db, `users/${uid}/tasks/${taskFrame || 'new-task-frame'}/${newTaskKey}`), taskData);
 
 			deleteButton.classList.remove('hidden');
 	})
