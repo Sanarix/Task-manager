@@ -7,7 +7,7 @@ export function addTask({db, uid, taskFrame}) {
 	const addTaskButton = document.querySelector('.btn-submit');
 	const resetButton = document.querySelector('.btn-reset');
 	const deleteButton = document.querySelector('.btn-delete');
-	const newTaskFrame = document.querySelector('.new-task-frame');
+	const currentTaskFrame = document.querySelector(`.${taskFrame || 'new-task-frame'}`);
 
 	deleteButton.classList.add('hidden');
 
@@ -29,7 +29,7 @@ export function addTask({db, uid, taskFrame}) {
 			return
 		}
 
-		newTaskFrame.prepend(task);
+		currentTaskFrame.prepend(task);
 		closeModal(true);
 
 		pushTaskDB(db, uid, taskHeader, taskText, newTaskKey, taskFrame);

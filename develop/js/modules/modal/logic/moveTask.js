@@ -1,5 +1,5 @@
 import { deleteTask } from "../../../functions/task/deleteTask";
-import { addTask } from "../../../functions/task/addTask";
+import { pushTaskDB } from "../../../functions/task/pushTaskDB";
 
 export function moveTask(element, db, uid) {
 	const taskCard = element;
@@ -70,8 +70,18 @@ export function moveTask(element, db, uid) {
 			if(metaData.taskCardParent != currentTaskFrame &&
 				currentTaskFrame != null) {
 				taskCardFantom.hidden = true;
+				const taskCardHeader = 
+				taskCard.querySelector('.task-card_header').textContent.trim();
+				const taskCardText = taskCard.querySelector('.task-card_text').textContent;
 				deleteTask(metaData.taskCardParent, taskCardId, db, uid);
-				console.log(taskCardFantom);
+				pushTaskDB(
+					db, 
+					uid, 
+					taskCardHeader, 
+					taskCardText, 
+					taskCardId, 
+					currentTaskFrame
+					);
 			} else {
 				taskCardFantom.hidden = true;
 				return
