@@ -7,6 +7,9 @@ export function moveTask(element, db, uid) {
 	let metaData = {};
 
 	taskCard.onmousedown = function(event) {
+		if (event.target.closest('.task-card_menu')){
+			returnть
+		}
 		metaData = {
 			taskCardParent: taskCard.parentElement.className.split(' ')[0],
 		}
