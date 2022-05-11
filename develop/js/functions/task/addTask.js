@@ -1,6 +1,7 @@
 import { taskNode } from "./taskNode";
 import { closeModal } from "../../modules/modal/logic/closeModal";
 import { ref, push, set } from "@firebase/database";
+import { pushTaskDB } from "./pushTaskDB";
 
 export function addTask({db, uid, taskFrame}) {
 	const addTaskButton = document.querySelector('.btn-submit');
@@ -31,14 +32,9 @@ export function addTask({db, uid, taskFrame}) {
 		newTaskFrame.prepend(task);
 		closeModal(true);
 
-		// Push in db
-		const taskData = {
-					"taskHeader": taskHeader,
-					"taskText": taskText
-			}
-			set(ref(db, `users/${uid}/tasks/${taskFrame || 'new-task-frame'}/${newTaskKey}`), taskData);
+		pushTaskDB(db, uid, taskHeader, taskText, newTaskKey, taskFrame);
 
-			deleteButton.classList.remove('hidden');
+		deleteButton.classList.remove('hidden');
 	})
 
 	resetButton.addEventListener('click', (event) => {

@@ -1,4 +1,5 @@
 import { deleteTask } from "../../../functions/task/deleteTask";
+import { addTask } from "../../../functions/task/addTask";
 
 export function moveTask(element, db, uid) {
 	const taskCard = element;
@@ -8,7 +9,7 @@ export function moveTask(element, db, uid) {
 
 	taskCard.onmousedown = function(event) {
 		if (event.target.closest('.task-card_menu')){
-			returnть
+			return
 		}
 		metaData = {
 			taskCardParent: taskCard.parentElement.className.split(' ')[0],
@@ -70,7 +71,7 @@ export function moveTask(element, db, uid) {
 				currentTaskFrame != null) {
 				taskCardFantom.hidden = true;
 				deleteTask(metaData.taskCardParent, taskCardId, db, uid);
-				/*TODO Добавление таска в выбранный фрейм */
+				console.log(taskCardFantom);
 			} else {
 				taskCardFantom.hidden = true;
 				return
@@ -87,10 +88,12 @@ export function moveTask(element, db, uid) {
 
 		function leaveDroppable(droppableElement) {
 			droppableElement.style.boxShadow = null;
+			taskCardFantom.style.backgroundColor = 'inherit';
 		}
 
 		function enterDroppable(droppableElement) {
 			droppableElement.style.boxShadow = '0 40px 20px rgba(0,0,0,0.5)';
+			taskCardFantom.style.backgroundColor = '#eeffde';
 		}
 	}
 }
