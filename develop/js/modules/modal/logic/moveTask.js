@@ -73,6 +73,7 @@ export function moveTask(element, db, uid) {
 				const taskCardHeader = 
 				taskCard.querySelector('.task-card_header').textContent.trim();
 				const taskCardText = taskCard.querySelector('.task-card_text').textContent;
+				const taskCardParent = document.querySelector(`.${currentTaskFrame}`);
 				deleteTask(metaData.taskCardParent, taskCardId, db, uid);
 				pushTaskDB(
 					db, 
@@ -82,6 +83,7 @@ export function moveTask(element, db, uid) {
 					taskCardId, 
 					currentTaskFrame
 					);
+					taskCardParent.style.boxShadow = null;
 			} else {
 				taskCardFantom.hidden = true;
 				return
@@ -90,7 +92,6 @@ export function moveTask(element, db, uid) {
 			taskCard.onmouseup = null;
 			taskCard.onmousedown = null;
 			currentTaskFrame = null;
-			currentDroppable.style.boxShadow = null;y
 		};
 
 		taskCard.ondragstart = function() {
