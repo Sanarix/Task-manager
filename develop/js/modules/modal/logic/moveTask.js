@@ -72,8 +72,15 @@ export function moveTask(element, db, uid) {
 				taskCardFantom.hidden = true;
 				const taskCardHeader = 
 				taskCard.querySelector('.task-card_header').textContent.trim();
-				const taskCardText = taskCard.querySelector('.task-card_text').textContent;
+				let taskCardText;
+
+				if (taskCard.closest('.task-card_text')) {
+					taskCardText = taskCard.querySelector('.task-card_text').textContent;
+				}else {
+					taskCardText = '';
+				}
 				const taskCardParent = document.querySelector(`.${currentTaskFrame}`);
+				
 				deleteTask(metaData.taskCardParent, taskCardId, db, uid);
 				pushTaskDB(
 					db, 
