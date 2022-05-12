@@ -90,6 +90,7 @@ export function moveTask(element, db, uid) {
 			taskCard.onmouseup = null;
 			taskCard.onmousedown = null;
 			currentTaskFrame = null;
+			currentDroppable.style.boxShadow = null;y
 		};
 
 		taskCard.ondragstart = function() {
