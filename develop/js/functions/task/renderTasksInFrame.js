@@ -5,8 +5,6 @@ export function renderTasksInFrame(element, selector, db, uid) {
 		if(!element || !selector) {
 			throw new Error('renderTasksInFrame must contain 2 args');
 		}
-
-		console.log(selector);
 		
 		const frame = document.querySelector(selector);
 		const elementsInFrame = frame.children;
@@ -14,7 +12,6 @@ export function renderTasksInFrame(element, selector, db, uid) {
 		for( let element of elementsInFrame) {
 			if(element.classList.contains('task-frame_img')){
 				element.hidden = true;
-				console.log('плюсик скрыт');
 				frame.style.justifyContent = 'flex-start';
 			}else {
 				/* Для Progress и Finished фреймов */
