@@ -65,7 +65,7 @@ export function moveTask(element, db, uid) {
 
 		document.onmouseup = function() {
 		document.removeEventListener('mousemove', onMouseMove);
-		taskCard.style.backgroundColor = 'inherit';
+		taskCard.style.backgroundColor = '';
 
 			if(metaData.taskCardParent != currentTaskFrame &&
 				currentTaskFrame != null) {
@@ -107,7 +107,6 @@ export function moveTask(element, db, uid) {
 
 		function leaveDroppable(droppableElement) {
 			droppableElement.style.boxShadow = null;
-			taskCardFantom.style.backgroundColor = 'inherit';
 		}
 
 		function enterDroppable(droppableElement) {
