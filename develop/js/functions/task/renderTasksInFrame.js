@@ -5,8 +5,16 @@ export function renderTasksInFrame(element, selector, db, uid) {
 		if(!element || !selector) {
 			throw new Error('renderTasksInFrame must contain 2 args');
 		}
-		
+
 		const frame = document.querySelector(selector);
+
+		if(element.classList.contains('task-frame_img')) {
+			frame.innerHTML = '';
+			frame.prepend(element);
+			frame.style.justifyContent = 'center';
+			return
+		}
+
 		const elementsInFrame = frame.children;
 
 		for( let element of elementsInFrame) {

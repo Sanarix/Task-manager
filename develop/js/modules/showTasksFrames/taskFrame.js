@@ -11,6 +11,13 @@ export class taskFrame {
 		this.createFrame();
 	}
 
+	createImg(className, imageURL) {
+		const img = document.createElement('img');
+		img.className = className;
+		img.src = imageURL;
+		return img;
+	}
+
 	createFrame() {
 
 		function div() {

@@ -2,6 +2,7 @@ import { ref, onValue } from 'firebase/database';
 import { renderTasksInFrame } from './renderTasksInFrame.js';
 import { taskNode } from './taskNode.js';
 import { getTasksInFrame } from './getTasksInFrame.js';
+import { taskFrame } from '../../modules/showTasksFrames/taskFrame.js';
 
 export function getTasks(db, uid) {
 	const newTasks = ref(db, `users/${uid}/tasks/new-task-frame`);
@@ -13,17 +14,22 @@ export function getTasks(db, uid) {
 			const data = snapshot.val();
 			const tasksInFrames = getTasksInFrame();
 
+			if (!data && selector == '.new-task-frame') {
+				const Img = new taskFrame();
+				let img = Img.createImg('task-frame_img',
+				'./../../../img/add-crist-in-circle.svg');
+				renderTasksInFrame(img, selector, db, uid);
+			}
+
 			for (let key in data){
 				const keyPost = key;
 				const dataPost = data[keyPost];
 	
-				if(tasksInFrames) {
 					for (let task of tasksInFrames) {
 						if(task.dataset.id === keyPost) {
 							task.remove();
 						}
-					}
-				}
+					}	
 				renderTasksInFrame(taskNode(keyPost, dataPost), selector, db, uid);
 			}
 		})

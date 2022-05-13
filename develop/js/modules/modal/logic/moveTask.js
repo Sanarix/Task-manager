@@ -1,6 +1,5 @@
 import { deleteTask } from "../../../functions/task/deleteTask";
 import { pushTaskDB } from "../../../functions/task/pushTaskDB";
-import { getTasks } from "../../../functions/task/getTasks";
 
 export function moveTask(element, db, uid) {
 	const taskCard = element;
@@ -100,7 +99,6 @@ export function moveTask(element, db, uid) {
 			taskCard.onmouseup = null;
 			taskCard.onmousedown = null;
 			currentTaskFrame = null;
-			getTasks(db, uid);
 		};
 
 		taskCard.ondragstart = function() {
