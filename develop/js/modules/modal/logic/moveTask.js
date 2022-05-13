@@ -33,7 +33,7 @@ export function moveTask(element, db, uid) {
 		}
 
 		let currentDroppable = null;
-		let currentTaskFrame = null;
+		let currentTaskFrame = null;//className of the format .class-of-task
 
 		function onMouseMove(event) {
 			taskCard.style.backgroundColor = '#FFF0F5';
@@ -74,7 +74,7 @@ export function moveTask(element, db, uid) {
 				taskCard.querySelector('.task-card_header').textContent.trim();
 				let taskCardText;
 
-				if (taskCard.closest('.task-card_text')) {
+				if (taskCard.querySelector('.task-card_text')) {
 					taskCardText = taskCard.querySelector('.task-card_text').textContent;
 				}else {
 					taskCardText = '';
