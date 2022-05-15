@@ -12,26 +12,28 @@ export function getTasks(db, uid) {
 	function checkDoubleTasks(tasks, selector) {
 		onValue(tasks, (snapshot) => {
 			const data = snapshot.val();
-			const tasksInFrames = getTasksInFrame();
+			const tasksInFrame = getTasksInFrame(selector);
+			const tasksArr = [];
 
 			if (!data && selector == '.new-task-frame') {
 				const Img = new taskFrame();
 				let img = Img.createImg('task-frame_img',
 				'./../../../img/add-crist-in-circle.svg');
-				renderTasksInFrame(img, selector, db, uid);
+				renderTasksInFrame(null, selector, db, uid, img);
 			}
 
 			for (let key in data){
 				const keyPost = key;
 				const dataPost = data[keyPost];
+				tasksArr.push(taskNode(keyPost, dataPost, dataPost.time));
 	
-					for (let task of tasksInFrames) {
+					for (let task of tasksInFrame) {
 						if(task.dataset.id === keyPost) {
 							task.remove();
 						}
 					}	
-				renderTasksInFrame(taskNode(keyPost, dataPost), selector, db, uid);
 			}
+			renderTasksInFrame(tasksArr, selector, db, uid);
 		})
 	}
 
@@ -40,3 +42,4 @@ export function getTasks(db, uid) {
 	checkDoubleTasks(finishedTask, '.finish-task-frame');
 
 }
+/*taskNode(keyPost, dataPost)*/

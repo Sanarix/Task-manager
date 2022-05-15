@@ -1,7 +1,7 @@
 import { deleteTask } from "../../../functions/task/deleteTask";
 import { pushTaskDB } from "../../../functions/task/pushTaskDB";
 
-export function moveTask(element, db, uid) {
+export function moveTask(element, db, uid, time) {
 	const taskCard = element;
 	let taskCardFantom = taskCard.cloneNode(true);
 	const taskCardId = element.dataset.id;
@@ -63,7 +63,7 @@ export function moveTask(element, db, uid) {
 
 		document.addEventListener('mousemove', onMouseMove);
 
-		document.onmouseup = function() {
+		document.onmouseup = async function() {
 		document.removeEventListener('mousemove', onMouseMove);
 		taskCard.style.backgroundColor = '';
 
@@ -88,7 +88,8 @@ export function moveTask(element, db, uid) {
 					taskCardHeader, 
 					taskCardText, 
 					taskCardId, 
-					currentTaskFrame
+					currentTaskFrame,
+					time
 					);
 					taskCardParent.style.boxShadow = null;
 			} else {

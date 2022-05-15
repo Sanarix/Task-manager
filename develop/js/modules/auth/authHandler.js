@@ -20,15 +20,34 @@ export function authHandler(auth) {
 
 		authEmail.addEventListener('click', async event => {
 			event.preventDefault();
-			const email = document.querySelector('.email').value;
-			const password = document.querySelector('.password').value;
+			const email = document.querySelector('.email');
+			const emailValue = document.querySelector('.email').value;
+			const password = document.querySelector('.password');
+			const passwordValue = document.querySelector('.password').value;
 			
-			await signInWithEmailAndPassword(auth, email, password).then(() => {
+			await signInWithEmailAndPassword(auth, emailValue, passwordValue).then(() => {
 			}).catch((error) => {
 				const errorCode = error.code;
 				const errorMessage = error.message;
-				console.log(errorCode);
-				console.log(errorMessage);
+				const modalError = document.querySelector('.modal-error');
+				modalError.classList.toggle('hidden');
+				setTimeout(()=>{
+					modalError.classList.toggle('hidden');
+				}, 5000)
+
+				if(errorCode =='auth/invalid-email') {
+					email.style.backgroundColor = 'red';
+					modalError.textContent = 'Неправильный имейл'
+				}else {
+					email.style.backgroundColor = 'inherit';
+				}
+
+				if(errorCode == 'auth/wrong-password') {
+					password.style.backgroundColor = 'red';
+					modalError.textContent = 'Неправильный имейл'
+				}else {
+					password.style.backgroundColor = 'inherit';
+				}
 			});
 		})
 

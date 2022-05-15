@@ -5,6 +5,7 @@ import { deleteTask } from "../../../functions/task/deleteTask";
 
 export function openModalChangeTask(element, db, uid) {
 	const elementID = element.dataset.id;
+	const elementTime = element.dataset.time;
 	const parentElement = element.parentElement.classList[0];
 	const cardHeader = element.querySelector('.task-card_header').
 	textContent.
@@ -17,7 +18,7 @@ export function openModalChangeTask(element, db, uid) {
 	const buttonSubmit = document.querySelector('.btn-submit');
 	const buttonDelete = document.querySelector('.btn-delete');
 	const buttonReset = document.querySelector('.btn-reset');
-	buttonSubmit.addEventListener('click', () => {updateTask(parentElement, elementID, db, uid)});
+	buttonSubmit.addEventListener('click', () => {updateTask(parentElement, elementID, elementTime, db, uid)});
 	buttonDelete.addEventListener('click', () => deleteTask(parentElement, elementID, db, uid));
 	buttonReset.addEventListener('click', () => {
 		document.querySelector('.task-text').textContent = '';

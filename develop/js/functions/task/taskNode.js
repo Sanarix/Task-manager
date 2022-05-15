@@ -1,7 +1,8 @@
-export function taskNode(key, {taskHeader, taskText,}) {
+export function taskNode(key, {taskHeader, taskText}, taskTime) {
 	const task = document.createElement('div');
 	task.className = 'task-card';
 	task.dataset.id = key;
+	task.dataset.time = taskTime;
 	const taskBody =  `
 			<button class="task-card_menu">
 				<img src="./img/edit.svg">

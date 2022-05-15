@@ -19,6 +19,7 @@ export function addTask({db, uid, taskFrame}) {
 		const dbKeyPosition = ref(db, `users/${uid}/tasks/${taskFrame || 'new-task-frame'}`);
 		const newTaskKey = push(dbKeyPosition).key;
 		const task = taskNode(newTaskKey, {taskHeader, taskText});
+		const date = new Date().getTime();
 
 		if(!taskHeader && !taskText) {
 			function borderHighlighting () {
@@ -32,7 +33,7 @@ export function addTask({db, uid, taskFrame}) {
 		currentTaskFrame.prepend(task);
 		closeModal(true);
 
-		pushTaskDB(db, uid, taskHeader, taskText, newTaskKey, taskFrame);
+		pushTaskDB(db, uid, taskHeader, taskText, newTaskKey, taskFrame, date);
 
 		deleteButton.classList.remove('hidden');
 	})
