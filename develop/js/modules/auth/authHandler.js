@@ -30,42 +30,38 @@ export function authHandler(auth) {
 				const errorCode = error.code;
 				const errorMessage = error.message;
 				const modalError = document.querySelector('.modal-error');
-				modalError.classList.toggle('hidden');
-				setTimeout(()=>{
-					modalError.classList.toggle('hidden');		
-				}, 5000)
+				toggleModalError(modalError);
+				setTimeout(toggleModalError, 5000, modalError)
 
 				if(errorCode =='auth/invalid-email') {
 					highlightRed(email);
-					setTimeout(highlightRollback, 5000, email);
-					modalError.textContent = 'Incorrect email'
-				}else {
 					highlightRollback(email);
+					modalError.textContent = 'Incorrect email'
 				}
 
 				if(errorCode == 'auth/wrong-password') {
 					highlightRed(password);
-					setTimeout(highlightRollback, 5000, password);
-					modalError.textContent = 'Invalid password'
-				}else {
 					highlightRollback(password);
+					modalError.textContent = 'Invalid password'
 				}
 
 				if(errorCode == 'auth/user-not-found') {
 					modalError.textContent = 'User not found, check the correctness of the email';
 					highlightRed(email);
-					setTimeout(highlightRollback, 5000, email);
-				}else {
 					highlightRollback(email);
 				}
 			});
 		})
 
-	function highlightRed(element) {
-			element.style.backgroundColor = 'red';
+	function toggleModalError(modalError) {
+		modalError.classList.toggle('hidden');
 	}
 
-	function highlightRollback(element) {
+	function highlightRed(element) {
+		element.style.backgroundColor = 'red';
+	}
+
+	function highlightRollback(element, delay) {
 		element.onfocus = function() {
 			element.style.backgroundColor = 'inherit';
 		}
