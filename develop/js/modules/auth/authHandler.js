@@ -50,15 +50,25 @@ export function authHandler(auth) {
 				}else {
 					highlightRollback(password);
 				}
+
+				if(errorCode == 'auth/user-not-found') {
+					modalError.textContent = 'User not found, check the correctness of the email';
+					highlightRed(email);
+					setTimeout(highlightRollback, 5000, email);
+				}else {
+					highlightRollback(email);
+				}
 			});
 		})
 
 	function highlightRed(element) {
-		element.style.backgroundColor = 'red';
+			element.style.backgroundColor = 'red';
 	}
 
 	function highlightRollback(element) {
-		element.style.backgroundColor = 'inherit';
+		element.onfocus = function() {
+			element.style.backgroundColor = 'inherit';
+		}
 	}
 
 	openRegistrationModal(auth);
