@@ -45,9 +45,9 @@ export function authHandler(auth) {
 				}
 
 				if(errorCode == 'auth/user-not-found') {
-					modalError.textContent = 'The user with this email was not found, check the correctness of the email';
 					highlightRed(email);
 					highlightRollback(email);
+					modalError.textContent = 'The user with this email was not found, check the correctness of the email';
 				}
 			});
 		})
@@ -62,7 +62,7 @@ export function authHandler(auth) {
 
 	function highlightRollback(element, delay) {
 		element.onfocus = function() {
-			element.style.backgroundColor = 'inherit';
+		element.style.backgroundColor = 'inherit';
 		}
 	}
 
