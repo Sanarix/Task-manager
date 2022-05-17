@@ -28,7 +28,6 @@ export function authHandler(auth) {
 			await signInWithEmailAndPassword(auth, emailValue, passwordValue).then(() => {
 			}).catch((error) => {
 				const errorCode = error.code;
-				const errorMessage = error.message;
 				const modalError = document.querySelector('.modal-error');
 				toggleModalError(modalError);
 				setTimeout(toggleModalError, 5000, modalError)
@@ -46,7 +45,7 @@ export function authHandler(auth) {
 				}
 
 				if(errorCode == 'auth/user-not-found') {
-					modalError.textContent = 'User not found, check the correctness of the email';
+					modalError.textContent = 'The user with this email was not found, check the correctness of the email';
 					highlightRed(email);
 					highlightRollback(email);
 				}

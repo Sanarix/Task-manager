@@ -1,5 +1,6 @@
 export function closeModal(close) {
 	const modal = document.querySelector('.overlay');
+	const modalError = document.querySelector('.modal-error');
 	const closeButton = document.querySelector('.close-button');
 
 	if(close) {
