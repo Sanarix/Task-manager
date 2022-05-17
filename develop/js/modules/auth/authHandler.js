@@ -32,24 +32,34 @@ export function authHandler(auth) {
 				const modalError = document.querySelector('.modal-error');
 				modalError.classList.toggle('hidden');
 				setTimeout(()=>{
-					modalError.classList.toggle('hidden');
+					modalError.classList.toggle('hidden');		
 				}, 5000)
 
 				if(errorCode =='auth/invalid-email') {
-					email.style.backgroundColor = 'red';
-					modalError.textContent = 'Неправильный имейл'
+					highlightRed(email);
+					setTimeout(highlightRollback, 5000, email);
+					modalError.textContent = 'Incorrect email'
 				}else {
-					email.style.backgroundColor = 'inherit';
+					highlightRollback(email);
 				}
 
 				if(errorCode == 'auth/wrong-password') {
-					password.style.backgroundColor = 'red';
-					modalError.textContent = 'Неправильный имейл'
+					highlightRed(password);
+					setTimeout(highlightRollback, 5000, password);
+					modalError.textContent = 'Invalid password'
 				}else {
-					password.style.backgroundColor = 'inherit';
+					highlightRollback(password);
 				}
 			});
 		})
+
+	function highlightRed(element) {
+		element.style.backgroundColor = 'red';
+	}
+
+	function highlightRollback(element) {
+		element.style.backgroundColor = 'inherit';
+	}
 
 	openRegistrationModal(auth);
 }
