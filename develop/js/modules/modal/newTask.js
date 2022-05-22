@@ -6,7 +6,7 @@ export function newTask(taskHeader, taskText, cardHeader = '',) {
 			<div class="text-area">
 				<div class="title" contenteditable data-placeholder="Title">${taskHeader 
 				|| ''}</div>
-				<pre class="task-text" contenteditable data-placeholder="Task">${taskText || ''}</pre>
+				<textarea class="task-text" rows="10" placeholder="Task">${taskText || ''}</textarea>
 			</div>
 			<div class="vertical-line">
 				<div class="buttons">

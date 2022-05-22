@@ -13,10 +13,11 @@ export function taskNode(key, {taskHeader, taskText}, taskTime) {
 			`
 	task.innerHTML = taskBody;
 	if (taskText) {
-		const text = document.createElement('pre');
+		const text = document.createElement('div');
+		text.disabled = 'disabled';
 		text.className = 'task-card_text';
 		text.textContent = taskText;
-		task.append(text)
+		task.append(text);
 	}
 	return task
 }

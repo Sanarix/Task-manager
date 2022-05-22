@@ -135,12 +135,14 @@ body
 		margin: 0
 		padding: 0.5vh
 	&_text
-		align: right
-		overflow: hidden
-		word-break: break-all
-		max-width: 100%
+		width: 100%
+		background-color: inherit
 		border-top: 1px solid black
-		white-space: pre-wrap
+		word-break: break-all
+		white-space: pre-line
+		word-wrap: break-word
+		overflow-wrap: break-word
+		overflow: hidden
 	&_menu
 			position: relative
 			left: 85%
@@ -288,12 +290,7 @@ body
 		padding: 0.5vh 0 0 0.5vh
 		border: 2px solid black
 		resize: none
-		overflow: hidden
 		white-space: pre-wrap
-		&:empty:before 
-			content: attr(data-placeholder)
-			color: grey
-			display: inline-block
 
 .vertical-line
 	height: 100%

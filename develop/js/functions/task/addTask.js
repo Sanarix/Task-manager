@@ -15,8 +15,7 @@ export function addTask({db, uid, taskFrame}) {
 		event.preventDefault();
 		const taskHeaderField = document.querySelector('.title');
 		const taskHeader = document.querySelector('.title').textContent.trim();
-		const taskText = document.querySelector('.task-text').textContent;
-		console.log(taskText);
+		const taskText = document.querySelector('.task-text').value;
 		const dbKeyPosition = ref(db, `users/${uid}/tasks/${taskFrame || 'new-task-frame'}`);
 		const newTaskKey = push(dbKeyPosition).key;
 		const task = taskNode(newTaskKey, {taskHeader, taskText});
