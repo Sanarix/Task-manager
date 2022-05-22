@@ -125,6 +125,7 @@ body
 	color: black
 	user-select: none
 	&_head
+		display: flex
 		overflow: hidden
 		margin: 0
 		padding-left: 1vw
@@ -132,8 +133,11 @@ body
 	&_header
 		width: 90%
 		text-align: center
-		margin: 0
 		padding: 0.5vh
+		margin: 0
+		white-space: pre-line
+		word-wrap: break-word
+		overflow-wrap: break-word
 	&_text
 		width: 100%
 		background-color: inherit
@@ -144,17 +148,15 @@ body
 		overflow-wrap: break-word
 		overflow: hidden
 	&_menu
-			position: relative
-			left: 85%
-			width: 1.7vw
-			background-color: inherit
-			border: none
-			cursor: pointer
+		width: 1.7vw
+		background-color: inherit
+		border: none
+		cursor: pointer
+		margin: 0
+		padding: 0
+		img
 			margin: 0
 			padding: 0
-			img
-				margin: 0
-				padding: 0
 
 
 .settings-container

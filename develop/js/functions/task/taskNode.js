@@ -4,13 +4,13 @@ export function taskNode(key, {taskHeader, taskText}, taskTime) {
 	task.dataset.id = key;
 	task.dataset.time = taskTime;
 	const taskBody =  `
-			<button class="task-card_menu">
-				<img src="./img/edit.svg">
-			</button>
-			<div class = "task-card_head">
+		<div class = "task-card_head">
 			<h3 class="task-card_header">${taskHeader}</h3>
-			</div>
-			`
+			<button class="task-card_menu">
+			<img src="./img/edit.svg">
+			</button>
+		</div>
+	`
 	task.innerHTML = taskBody;
 	if (taskText) {
 		const text = document.createElement('div');
