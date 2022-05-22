@@ -36,7 +36,7 @@ export function addTask({db, uid, taskFrame}) {
 
 	resetButton.addEventListener('click', (event) => {
 		event.preventDefault();
-		document.querySelector('.task-text').textContent = '';
+		document.querySelector('.task-text').value = '';
 	})
 
 	function borderHighlighting (element) {
