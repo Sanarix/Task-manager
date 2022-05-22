@@ -1,6 +1,6 @@
 import { taskNode } from "./taskNode";
 import { closeModal } from "../../modules/modal/logic/closeModal";
-import { ref, push, set } from "@firebase/database";
+import { ref, push } from "@firebase/database";
 import { pushTaskDB } from "./pushTaskDB";
 
 export function addTask({db, uid, taskFrame}) {
@@ -16,17 +16,14 @@ export function addTask({db, uid, taskFrame}) {
 		const taskHeaderField = document.querySelector('.title');
 		const taskHeader = document.querySelector('.title').textContent.trim();
 		const taskText = document.querySelector('.task-text').textContent;
+		console.log(taskText);
 		const dbKeyPosition = ref(db, `users/${uid}/tasks/${taskFrame || 'new-task-frame'}`);
 		const newTaskKey = push(dbKeyPosition).key;
 		const task = taskNode(newTaskKey, {taskHeader, taskText});
 		const date = new Date().getTime();
 
 		if(!taskHeader && !taskText) {
-			function borderHighlighting () {
-				taskHeaderField.style.border = '3px solid red';
-				setTimeout(()=>(taskHeaderField.style.border = '2px solid black'), 1500)
-			}
-			borderHighlighting();
+			borderHighlighting(taskHeaderField);
 			return
 		}
 
@@ -42,4 +39,9 @@ export function addTask({db, uid, taskFrame}) {
 		event.preventDefault();
 		document.querySelector('.task-text').textContent = '';
 	})
+
+	function borderHighlighting (element) {
+		element.style.border = '3px solid red';
+		setTimeout(()=>(element.style.border = '2px solid black'), 1500)
+	}
 }

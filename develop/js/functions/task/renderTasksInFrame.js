@@ -1,5 +1,5 @@
 import { taskMenuHandler } from "./taskMenuHandler";
-import { moveTask } from "../../modules/modal/logic/moveTask";
+import { moveTask } from "./moveTask";
 
 export function renderTasksInFrame(arr, selector, db, uid, img) {	
 	const frame = document.querySelector(selector);
