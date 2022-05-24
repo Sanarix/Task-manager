@@ -24,6 +24,16 @@ export function authHandler(auth) {
 			const emailValue = document.querySelector('.email').value;
 			const password = document.querySelector('.password');
 			const passwordValue = document.querySelector('.password').value;
+
+			if(!email.value) {
+				highlightError(email, 'Please, enter your email');
+				return
+			}
+
+			if(!password.value) {
+				highlightError(password, 'Please, enter your password');
+				return
+			}
 			
 			await signInWithEmailAndPassword(auth, emailValue, passwordValue).then(() => {
 			}).catch((error) => {
@@ -40,7 +50,6 @@ export function authHandler(auth) {
 				if(errorCode == 'auth/user-not-found') {
 					highlightError(email, 'Something wrong! Check your email');
 				}
-				console.log(errorCode);
 			});
 		})
 
@@ -62,6 +71,7 @@ export function authHandler(auth) {
 			element.onfocus = function() {
 				element.style.borderColor = 'inherit';
 				element.style.backgroundColor = 'inherit';
+				element.parentElement.classList.remove('wrapper_error');
 			}
 		}
 
