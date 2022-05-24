@@ -36,7 +36,7 @@ export function moveTask(element, db, uid, time) {
 		let currentTaskFrame = null;//className of the format .class-of-task
 
 		function onMouseMove(event) {
-			taskCard.style.backgroundColor = '#FFF0F5';
+			taskCard.style.backgroundColor = '#fee7e6';
 			moveAt(event.pageX, event.pageY);
 
 			taskCardFantom.hidden = true;
@@ -108,6 +108,7 @@ export function moveTask(element, db, uid, time) {
 
 		function leaveDroppable(droppableElement) {
 			droppableElement.style.boxShadow = null;
+			taskCardFantom.style.backgroundColor = 'inherit';
 		}
 
 		function enterDroppable(droppableElement) {

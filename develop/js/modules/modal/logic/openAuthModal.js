@@ -8,8 +8,12 @@ export function openAuthModal(auth) {
 		<div class="auth">
 			<h3 class="modal-header auth-header">Log in</h3>
 			<div class="inputs">
+				<div class="wrapper">
 				<input type="text" class="email" placeholder="Email">
+				</div>
+				<div class="wrapper">
 				<input type="password" class="password" placeholder="Password">
+				</div>
 			</div>
 			<div class="auth-buttons">
 				<div class="auth-buttons_social">

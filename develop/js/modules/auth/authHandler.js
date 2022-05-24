@@ -28,43 +28,42 @@ export function authHandler(auth) {
 			await signInWithEmailAndPassword(auth, emailValue, passwordValue).then(() => {
 			}).catch((error) => {
 				const errorCode = error.code;
-				const modalError = document.querySelector('.modal-error');
-				toggleModalError(modalError);
-				setTimeout(toggleModalError, 5000, modalError)
 
 				if(errorCode =='auth/invalid-email') {
-					highlightRed(email);
-					highlightRollback(email);
-					modalError.textContent = 'Incorrect email'
+					highlightError(email, 'Incorrect email');
 				}
 
 				if(errorCode == 'auth/wrong-password') {
-					highlightRed(password);
-					highlightRollback(password);
-					modalError.textContent = 'Invalid password'
+					highlightError(password, 'Invalid password');
 				}
 
 				if(errorCode == 'auth/user-not-found') {
-					highlightRed(email);
-					highlightRollback(email);
-					modalError.textContent = 'The user with this email was not found, check the correctness of the email';
+					highlightError(email, 'Something wrong! Check your email');
 				}
+				console.log(errorCode);
 			});
 		})
 
-	function toggleModalError(modalError) {
-		modalError.classList.toggle('hidden');
-	}
-
-	function highlightRed(element) {
-		element.style.backgroundColor = 'red';
-	}
-
-	function highlightRollback(element, delay) {
-		element.onfocus = function() {
-		element.style.backgroundColor = 'inherit';
+		function highlightError(element, message) {
+			element.style.borderColor = '#d33';
+			element.style.backgroundColor = '#fee7e6';
+			element.parentElement.classList.add('wrapper_error');
+			element.parentElement.dataset.error = message;
+			handlerHide(element);
+			setTimeout(hideError, 5000, element);
 		}
-	}
+
+		function hideError(element) {
+			handlerHide(element);
+			element.parentElement.classList.remove('wrapper_error');
+		}
+
+		function handlerHide(element) {
+			element.onfocus = function() {
+				element.style.borderColor = 'inherit';
+				element.style.backgroundColor = 'inherit';
+			}
+		}
 
 	openRegistrationModal(auth);
 }

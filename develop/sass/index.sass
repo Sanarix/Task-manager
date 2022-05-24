@@ -344,12 +344,54 @@ body
 		align-items: center
 		justify-content: center
 		flex-direction: column
-		input
-			height: 5vh
-			width: 100%
-			border: 2px solid black
-			margin-bottom: 3vh
+
+	.wrapper
+		position: relative
+		box-sizing: border-box
+		margin-bottom: 3vh
+		&_error::after
+			content: attr(data-error)
+			box-sizing: border-box
+			position: absolute
+			display: block
+			display: flex
+			align-items: center
+			justify-content: center
 			font-size: 1.2em
+			font-weight: bold
+			border-radius: 5px
+			width: 100%
+			height: 5vh
+			left: 110%
+			top: 0%
+			padding: 1vh
+			background-color: #FF3300
+			z-index: 100
+		&_error::before
+			content: ''
+			box-sizing: border-box
+			position: absolute
+			top: 20%
+			left: 107%
+			display: block
+			transform: rotate(45deg)
+			width: 3vh
+			height: 3vh
+			background-color: #FF3300
+			z-index: 90
+
+		.email
+			display: block
+			height: 5vh
+			font-size: 1.2em
+			border: 2px solid black
+			border-radius: 5px
+		.password
+			display: block
+			height: 5vh
+			font-size: 1.2em
+			border: 2px solid black
+			border-radius: 5px
 	.auth-buttons
 		.auth-buttons_social
 			margin-bottom: 2vh
