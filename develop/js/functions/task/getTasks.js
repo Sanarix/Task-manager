@@ -3,43 +3,54 @@ import { renderTasksInFrame } from './renderTasksInFrame.js';
 import { taskNode } from './taskNode.js';
 import { getTasksInFrame } from './getTasksInFrame.js';
 import { taskFrame } from '../../modules/showTasksFrames/taskFrame.js';
+import { addLoader } from '../../modules/loader/addLoader.js';
 
 export function getTasks(db, uid) {
 	const newTasks = ref(db, `users/${uid}/tasks/new-task-frame`);
 	const progressTask = ref(db, `users/${uid}/tasks/progress-task-frame`);
 	const finishedTask = ref(db, `users/${uid}/tasks/finish-task-frame`);
 
-	function checkDoubleTasks(tasks, selector) {
-		onValue(tasks, (snapshot) => {
-			const data = snapshot.val();
-			const tasksInFrame = getTasksInFrame(selector);
-			const tasksArr = [];
+	async function checkDoubleTasks(tasks, selector) {
 
-			if (!data && selector == '.new-task-frame') {
-				const Img = new taskFrame();
-				let img = Img.createImg('task-frame_img',
-				'./../../../img/add-crist-in-circle.svg');
-				renderTasksInFrame(null, selector, db, uid, img);
-			}
+		addLoader(selector);
+		
+		const promise = new Promise((resolve, reject) =>{
 
-			for (let key in data){
-				const keyPost = key;
-				const dataPost = data[keyPost];
-				tasksArr.push(taskNode(keyPost, dataPost, dataPost.time));
+			onValue(tasks, (snapshot) => {
+
+				const data = snapshot.val();
+				const tasksInFrame = getTasksInFrame(selector);
+				const tasksArr = [];
 	
-					for (let task of tasksInFrame) {
-						if(task.dataset.id === keyPost) {
-							task.remove();
-						}
-					}	
-			}
-			renderTasksInFrame(tasksArr, selector, db, uid);
+				if (!data && selector == '.new-task-frame') {
+					const Img = new taskFrame();
+					let img = Img.createImg('task-frame_img',
+					'./../../../img/add-crist-in-circle.svg');
+					renderTasksInFrame(null, selector, db, uid, img);
+				}
+	
+				for (let key in data){
+					const keyPost = key;
+					const dataPost = data[keyPost];
+					tasksArr.push(taskNode(keyPost, dataPost, dataPost.time));
+		
+						for (let task of tasksInFrame) {
+							if(task.dataset.id === keyPost) {
+								task.remove();
+							}
+						}	
+				}
+				renderTasksInFrame(tasksArr, selector, db, uid);
+				resolve();
+			})
+		})
+
+		promise.then(()=>{
+			document.querySelector('.loader').remove();
 		})
 	}
 
 	checkDoubleTasks(newTasks, '.new-task-frame');
 	checkDoubleTasks(progressTask, '.progress-task-frame');
 	checkDoubleTasks(finishedTask, '.finish-task-frame');
-
 }
-/*taskNode(keyPost, dataPost)*/

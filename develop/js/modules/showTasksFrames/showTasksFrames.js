@@ -1,11 +1,12 @@
 import { taskFrame } from "./taskFrame.js";
 import { openModalNewTask } from "../modal/logic/openModalNewTask.js";
+import { addLoader } from "../loader/addLoader.js";
 
 export function showTasksFrames(db, userUid) {
 	const container = document.querySelector('.main');
 	container.innerHTML = '';
 	
-	const newTaskframe = new taskFrame(
+	const newTaskFrame = new taskFrame(
 		container,
 		'new-task-frame task-frame droppable',
 		'task-header new-task',
@@ -27,7 +28,7 @@ export function showTasksFrames(db, userUid) {
 		'Finished',
 		);
 
-	newTaskframe.render();
+	newTaskFrame.render();
 	progressTaskFrame.render();
 	finishTaskFrame.render();
 	openModalNewTask(db, userUid);
