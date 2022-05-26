@@ -10,7 +10,7 @@ export function getTasks(db, uid) {
 	const progressTask = ref(db, `users/${uid}/tasks/progress-task-frame`);
 	const finishedTask = ref(db, `users/${uid}/tasks/finish-task-frame`);
 
-	async function checkDoubleTasks(tasks, selector) {
+	function checkDoubleTasks(tasks, selector) {
 
 		addLoader(selector);
 		
@@ -23,8 +23,8 @@ export function getTasks(db, uid) {
 				const tasksArr = [];
 	
 				if (!data && selector == '.new-task-frame') {
-					const Img = new taskFrame();
-					let img = Img.createImg('task-frame_img',
+					const Img = new taskFrame();//Заимствуем метод 
+					const img = Img.createImg('task-frame_img',
 					'./../../../img/add-crist-in-circle.svg');
 					renderTasksInFrame(null, selector, db, uid, img);
 				}
