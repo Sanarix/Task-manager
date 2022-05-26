@@ -4,6 +4,7 @@ import { taskNode } from './taskNode.js';
 import { getTasksInFrame } from './getTasksInFrame.js';
 import { taskFrame } from '../../modules/showTasksFrames/taskFrame.js';
 import { addLoader } from '../../modules/loader/addLoader.js';
+import { removeLoader } from '../../modules/loader/removeLoader.js';
 
 export function getTasks(db, uid) {
 	const newTasks = ref(db, `users/${uid}/tasks/new-task-frame`);
@@ -46,7 +47,7 @@ export function getTasks(db, uid) {
 		})
 
 		promise.then(()=>{
-			document.querySelector('.loader').remove();
+			removeLoader(selector);
 		})
 	}
 
