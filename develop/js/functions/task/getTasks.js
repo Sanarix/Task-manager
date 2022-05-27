@@ -1,10 +1,4 @@
-import { ref, onValue } from 'firebase/database';
-import { renderTasksInFrame } from './renderTasksInFrame.js';
-import { taskNode } from './taskNode.js';
-import { getTasksInFrame } from './getTasksInFrame.js';
-import { taskFrame } from '../../modules/showTasksFrames/taskFrame.js';
-import { addLoader } from '../../modules/loader/addLoader.js';
-import { removeLoader } from '../../modules/loader/removeLoader.js';
+import { ref} from 'firebase/database';
 import { checkDoubleTasks } from './checkDoubleTasks.js';
 
 export function getTasks(db, uid) {

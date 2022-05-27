@@ -1,6 +1,5 @@
 import { deleteTask } from "./deleteTask";
 import { pushTaskDB } from "./pushTaskDB";
-import { updateTaskFrame } from "../../modules/showTasksFrames/updateTaskFrame";
 
 export function moveTask(element, db, uid, time) {
 	const taskCard = element;
@@ -93,7 +92,6 @@ export function moveTask(element, db, uid, time) {
 					time
 					);
 					taskCardParent.style.boxShadow = null;
-				updateTaskFrame(taskCardParent, taskCard, taskCardId, db, uid);
 			} else {
 				taskCardFantom.hidden = true;
 				return
