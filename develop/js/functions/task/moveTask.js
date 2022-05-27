@@ -63,7 +63,7 @@ export function moveTask(element, db, uid, time) {
 
 		document.addEventListener('mousemove', onMouseMove);
 
-		document.onmouseup = async function() {
+		document.onmouseup = function() {
 		document.removeEventListener('mousemove', onMouseMove);
 		taskCard.style.backgroundColor = '';
 
