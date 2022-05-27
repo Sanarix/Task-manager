@@ -1,9 +1,9 @@
 import { openModal } from "./openModal";
 import { newTask } from "../newTask";
-import { updateTask } from "../../../functions/task/updateTask";
+import { editTask } from "../../../functions/task/editTask";
 import { deleteTask } from "../../../functions/task/deleteTask";
 
-export function openModalChangeTask(element, db, uid) {
+export function openModalEditTask(element, db, uid) {
 	const elementID = element.dataset.id;
 	const elementTime = element.dataset.time;
 	const parentElement = element.parentElement.classList[0];
@@ -18,7 +18,7 @@ export function openModalChangeTask(element, db, uid) {
 	const buttonSubmit = document.querySelector('.btn-submit');
 	const buttonDelete = document.querySelector('.btn-delete');
 	const buttonReset = document.querySelector('.btn-reset');
-	buttonSubmit.addEventListener('click', () => {updateTask(parentElement, elementID, elementTime, db, uid)});
+	buttonSubmit.addEventListener('click', () => {editTask(parentElement, elementID, elementTime, db, uid)});
 	buttonDelete.addEventListener('click', () => deleteTask(parentElement, elementID, db, uid));
 	buttonReset.addEventListener('click', () => {
 		document.querySelector('.task-text').value = '';
