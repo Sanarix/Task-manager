@@ -40,9 +40,5 @@ export function checkDoubleTasks(tasks, selector, db, uid) {
 			})
 		})
 
-		promise.then(
-			function(){removeLoader(selector)},
-			function(error){console.log(error)}
-		)
-		promise.finally(()=>{return})
+		promise.then(()=>{removeLoader(selector)})
 }
