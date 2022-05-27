@@ -8,7 +8,7 @@ export function editTask(parentElement, elementID, elementTime, db, uid) {
 	set(ref(db, `users/${uid}/tasks/${parentElement}/${elementID}`), {
 		"taskHeader": header,
 		"taskText": text,
-		"time": elementTime
+		"time": elementTime,
 	})
 	closeModal(true);
 }

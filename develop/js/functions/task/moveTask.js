@@ -93,7 +93,7 @@ export function moveTask(element, db, uid, time) {
 					time
 					);
 					taskCardParent.style.boxShadow = null;
-				updateTaskFrame(taskCardParent, taskCard);
+				updateTaskFrame(taskCardParent, taskCard, taskCardId, db, uid);
 			} else {
 				taskCardFantom.hidden = true;
 				return
