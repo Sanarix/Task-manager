@@ -2,7 +2,7 @@ import { deleteTask } from "./deleteTask";
 import { pushTaskDB } from "./pushTaskDB";
 import { updateTaskFrame } from "../../modules/updateTaskFrame/updateTaskFrame";
 
-export function moveTask(element, db, uid, time) {
+export function moveTask(element, db, uid, time, pos) {
 	const taskCard = element;
 	let taskCardFantom = taskCard.cloneNode(true);
 	const taskCardId = element.dataset.id;
@@ -90,10 +90,11 @@ export function moveTask(element, db, uid, time) {
 					taskCardText, 
 					taskCardId, 
 					currentTaskFrame,
-					time
+					time,
+					pos
 					);
 					taskCardParent.style.boxShadow = null;
-					updateTaskFrame(taskCardParent, taskCard, db, uid);
+					updateTaskFrame(taskCardParent, taskCard, db, uid, taskCardId);
 			} else {
 				taskCardFantom.hidden = true;
 				return

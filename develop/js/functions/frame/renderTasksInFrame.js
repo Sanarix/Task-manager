@@ -23,7 +23,7 @@ export function renderTasksInFrame(arr, selector, db, uid) {
 	
 			frame.prepend(task);
 			taskMenuHandler(task, db, uid);
-			moveTask(task, db, uid, task.dataset.time)
+			moveTask(task, db, uid, task.dataset.time, task.dataset.pos);
 		}
 	}
 }

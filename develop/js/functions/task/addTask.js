@@ -2,6 +2,7 @@ import { taskNode } from "./taskNode";
 import { closeModal } from "../../modules/modal/logic/closeModal";
 import { ref, push } from "@firebase/database";
 import { pushTaskDB } from "./pushTaskDB";
+import { updateTaskFrame } from "../../modules/updateTaskFrame/updateTaskFrame";
 
 export function addTask({db, uid, taskFrame}) {
 	const addTaskButton = document.querySelector('.btn-submit');
