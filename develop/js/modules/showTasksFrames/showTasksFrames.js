@@ -10,7 +10,7 @@ export function showTasksFrames(db, userUid) {
 		'new-task-frame task-frame droppable',
 		'task-header new-task',
 		'New Task',
-		'./img/add-crist-in-circle.svg',
+		true,
 		);
 
 	const progressTaskFrame = new taskFrame(

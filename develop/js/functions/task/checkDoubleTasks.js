@@ -2,9 +2,9 @@ import { onValue } from 'firebase/database';
 import { renderTasksInFrame } from '../frame/renderTasksInFrame.js';
 import { taskNode } from './taskNode.js';
 import { getTasksInFrame } from '../frame/getTasksInFrame.js';
-import { taskFrame } from '../../modules/showTasksFrames/taskFrame.js';
 import { addLoader } from '../../modules/loader/addLoader.js';
 import { removeLoader } from '../../modules/loader/removeLoader.js';
+import { addCircleInFrame } from '../frame/addCircleInFrame.js';
 
 export function checkDoubleTasks(tasks, selector, db, uid) {
 	addLoader(selector);
@@ -17,9 +17,10 @@ export function checkDoubleTasks(tasks, selector, db, uid) {
 				const tasksInFrame = getTasksInFrame(selector);
 				const tasksArr = [];
 	
-				//Рисуем значок в .newTaskFrame 
+				//Рисуем значок если нет задач
 				if (!data && selector == '.new-task-frame') {
-					renderTasksInFrame(null, selector, db, uid, true);
+					const frame = document.querySelector(`${selector}`);
+					addCircleInFrame(frame);
 				}
 	
 				for (let key in data){
