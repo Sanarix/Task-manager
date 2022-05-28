@@ -1,8 +1,9 @@
-export function taskNode(key, {taskHeader, taskText}, taskTime) {
+export function taskNode(key, {taskHeader, taskText}, taskTime, taskPosition) {
 	const task = document.createElement('div');
 	task.className = 'task-card';
 	task.dataset.id = key;
 	task.dataset.time = taskTime;
+	task.dataset.pos = taskPosition;
 	const taskBody =  `
 		<div class = "task-card_head">
 			<h3 class="task-card_header">${taskHeader}</h3>
