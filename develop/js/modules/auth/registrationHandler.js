@@ -9,7 +9,6 @@ export function registrationHandler(auth) {
 		event.preventDefault();
 		const email = document.querySelector('.email').value;
 		const password = document.querySelector('.password').value;
-
 		createUserWithEmailAndPassword(auth, email, password);
 	})
 

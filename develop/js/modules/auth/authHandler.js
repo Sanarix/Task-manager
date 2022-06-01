@@ -1,4 +1,4 @@
-import { signInWithPopup, GoogleAuthProvider, GithubAuthProvider, signInWithEmailAndPassword } from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword} from "firebase/auth";
 import { openRegistrationModal } from "../modal/logic/openRegistrationModal.js";
 
 export function authHandler(auth) {
@@ -12,10 +12,9 @@ export function authHandler(auth) {
 			const userData = await signInWithPopup(auth, provider);
 		})
 
-		authGithub.addEventListener('click', async event => {
+		authGithub.addEventListener('click', event => {
 			event.preventDefault();
-			const provider = new GithubAuthProvider();
-			const userData = await signInWithPopup(auth, provider);
+			alert('Sorry this authorization method is not supported')
 		})
 
 		authEmail.addEventListener('click', async event => {
@@ -39,15 +38,15 @@ export function authHandler(auth) {
 			}).catch((error) => {
 				const errorCode = error.code;
 
-				if(errorCode =='auth/invalid-email') {
+				if(errorCode === 'auth/invalid-email') {
 					highlightError(email, 'Incorrect email');
 				}
 
-				if(errorCode == 'auth/wrong-password') {
+				if(errorCode === 'auth/wrong-password') {
 					highlightError(password, 'Invalid password');
 				}
 
-				if(errorCode == 'auth/user-not-found') {
+				if(errorCode === 'auth/user-not-found') {
 					highlightError(email, 'Something wrong! Check your email');
 				}
 			});

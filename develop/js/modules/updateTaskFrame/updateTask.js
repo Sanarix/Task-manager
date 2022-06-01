@@ -1,6 +1,7 @@
-import { getDatabase, ref, child, push, update } from "firebase/database";
+import { ref, update } from "firebase/database";
+import { getPosition } from "../../functions/frame/getPosition";
 
-export function updateTask(frame, currentTask, pos, db, uid, key) {
+export function updateTask(frame, currentTask, db, uid, key) {
 
 	const task = currentTask;
 	const header = task.querySelector('.task-card_header').textContent;
@@ -9,6 +10,7 @@ export function updateTask(frame, currentTask, pos, db, uid, key) {
 		text = task.querySelector('.task-card_text').textContent;
 	}
 	const taskTime = task.dataset.time;
+	const pos = getPosition(frame);
 
 	const taskData = {
 		"taskHeader": header,

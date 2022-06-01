@@ -2,7 +2,8 @@ import { taskNode } from "./taskNode";
 import { closeModal } from "../../modules/modal/logic/closeModal";
 import { ref, push } from "@firebase/database";
 import { pushTaskDB } from "./pushTaskDB";
-import { updateTaskFrame } from "../../modules/updateTaskFrame/updateTaskFrame";
+import { getPosition } from "../frame/getPosition";
+import { removeCircleInFrame } from "../frame/removeCircleInFrame";
 
 export function addTask({db, uid, taskFrame}) {
 	const addTaskButton = document.querySelector('.btn-submit');
@@ -28,10 +29,21 @@ export function addTask({db, uid, taskFrame}) {
 		}
 
 		currentTaskFrame.prepend(task);
+		removeCircleInFrame(currentTaskFrame);
+		const position = getPosition(currentTaskFrame, task);
+		console.log('позиция = ' + position);
 		closeModal(true);
 
-		pushTaskDB(db, uid, taskHeader, taskText, newTaskKey, taskFrame, date);
-
+		pushTaskDB(
+			db,
+			uid,
+			taskHeader, 
+			taskText, 
+			newTaskKey, 
+			taskFrame, 
+			date, 
+			position
+			);
 		deleteButton.classList.remove('hidden');
 	})
 

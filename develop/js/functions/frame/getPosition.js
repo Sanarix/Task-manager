@@ -1,5 +1,6 @@
-export function getPosition(frame) {
-	const tasks = frame.children;
+export function getPosition(frame, currentTask) {
+	const data = frame.children;
+	const tasks = [...data].reverse();
 	let position;
 
 	if(tasks.length == 1) {
@@ -7,7 +8,13 @@ export function getPosition(frame) {
 	}
 
 	if(tasks.length > 1) {
-		//TODO найти самую большую позицию и прибавить 1
+		for(let task of tasks) {
+			if(task == currentTask) {
+				position++
+				return position
+			}
+			position = +task.dataset.pos;
+		}
 	}
 	return position;
 }

@@ -1,5 +1,7 @@
 export function removeCircleInFrame(frame) {
 	const sign = frame.querySelector('.task-frame_img');
-	sign.remove();
-	frame.style.justifyContent = 'flex-start';
+	if(sign) {
+		sign.remove();
+		frame.style.justifyContent = 'flex-start';
+	}
 }
