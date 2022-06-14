@@ -1,5 +1,6 @@
 import { deleteTask } from "./deleteTask";
 import { pushTaskDB } from "./pushTaskDB";
+import { updateTasksPosition } from "../frame/updateTasksPosition";
 import { updateTaskFrame } from "../../modules/updateTaskFrame/updateTaskFrame";
 
 export function moveTask(element, db, uid, time, pos) {
@@ -83,6 +84,7 @@ export function moveTask(element, db, uid, time, pos) {
 				const taskCardParent = document.querySelector(`.${currentTaskFrame}`);
 				
 				deleteTask(metaData.taskCardParent, taskCardId, db, uid);
+				updateTasksPosition(taskCardParent, document.querySelector(`.${metaData.taskCardParent}`), taskCard)
 				pushTaskDB(
 					db, 
 					uid, 
@@ -116,6 +118,7 @@ export function moveTask(element, db, uid, time, pos) {
 
 		function enterDroppable(droppableElement) {
 			droppableElement.style.boxShadow = '0 40px 20px rgba(0,0,0,0.5)';
+			droppableElement.style.transitionDuration = '300ms';
 			taskCardFantom.style.backgroundColor = '#eeffde';
 		}
 	}
