@@ -3,5 +3,6 @@ export function removeCircleInFrame(frame) {
 	if(sign) {
 		sign.remove();
 		frame.style.justifyContent = 'flex-start';
+		frame.classList.remove('empty');
 	}
 }

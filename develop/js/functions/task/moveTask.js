@@ -1,7 +1,7 @@
 import { deleteTask } from "./deleteTask";
 import { pushTaskDB } from "./pushTaskDB";
-import { updateTasksPosition } from "../frame/updateTasksPosition";
 import { updateTaskFrame } from "../../modules/updateTaskFrame/updateTaskFrame";
+import { getPosition } from "../frame/getPosition";
 
 export function moveTask(element, db, uid, time, pos) {
 	const taskCard = element;
@@ -84,7 +84,9 @@ export function moveTask(element, db, uid, time, pos) {
 				const taskCardParent = document.querySelector(`.${currentTaskFrame}`);
 				
 				deleteTask(metaData.taskCardParent, taskCardId, db, uid);
-				updateTasksPosition(taskCardParent, document.querySelector(`.${metaData.taskCardParent}`), taskCard)
+				const ss = getPosition(taskCardParent, taskCard);
+				console.log(ss);
+				const taskCardPos = updateTaskFrame(taskCardParent, taskCard, db, uid, taskCardId);
 				pushTaskDB(
 					db, 
 					uid, 
@@ -93,10 +95,9 @@ export function moveTask(element, db, uid, time, pos) {
 					taskCardId, 
 					currentTaskFrame,
 					time,
-					pos
+					taskCardPos
 					);
 					taskCardParent.style.boxShadow = null;
-					updateTaskFrame(taskCardParent, taskCard, db, uid, taskCardId);
 			} else {
 				taskCardFantom.hidden = true;
 				return

@@ -29,9 +29,8 @@ export function addTask({db, uid, taskFrame}) {
 		}
 
 		currentTaskFrame.prepend(task);
-		removeCircleInFrame(currentTaskFrame);
 		const position = getPosition(currentTaskFrame, task);
-		console.log('позиция = ' + position);
+		removeCircleInFrame(currentTaskFrame);
 		closeModal(true);
 
 		pushTaskDB(

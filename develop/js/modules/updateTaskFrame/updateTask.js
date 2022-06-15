@@ -10,7 +10,7 @@ export function updateTask(frame, currentTask, db, uid, key) {
 		text = task.querySelector('.task-card_text').textContent;
 	}
 	const taskTime = task.dataset.time;
-	const pos = getPosition(frame);
+	const pos = getPosition(frame, currentTask);
 
 	const taskData = {
 		"taskHeader": header,
@@ -21,6 +21,5 @@ export function updateTask(frame, currentTask, db, uid, key) {
 
 	const updates = {};
   updates[`users/${uid}/tasks/${frame.classList[0]}/${key}`] = taskData;
-
-  return update(ref(db), updates);
+  return update(ref(db), updates), pos;
 }

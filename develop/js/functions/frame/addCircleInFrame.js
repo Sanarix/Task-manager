@@ -8,6 +8,7 @@ export function addCircleInFrame(frame) {
 	frame.innerHTML = '';
 	frame.prepend(img);
 	frame.style.justifyContent = 'center';
+	frame.classList.add('empty');
 
 	return
 }
