@@ -1,4 +1,4 @@
-import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword} from "firebase/auth";
+import { signInWithPopup, GoogleAuthProvider, signInWithEmailAndPassword, GithubAuthProvider} from "firebase/auth";
 import { openRegistrationModal } from "../modal/logic/openRegistrationModal.js";
 
 export function authHandler(auth) {
@@ -14,7 +14,16 @@ export function authHandler(auth) {
 
 		authGithub.addEventListener('click', event => {
 			event.preventDefault();
-			alert('Sorry this authorization method is not supported')
+			const provider = new GithubAuthProvider();
+			signInWithPopup(auth, provider)
+			.then((result) => {
+				const credentional = GithubAuthProvider.credentialFromResult(result);
+				const token = credential.accessToken;
+			}).catch((error) => {
+				const errorCode = error.code;
+				const credential = GithubAuthProvider.credentialFromError(error);
+				alert(`Ups! Error : ${errorCode}`);
+			});
 		})
 
 		authEmail.addEventListener('click', async event => {
@@ -24,16 +33,6 @@ export function authHandler(auth) {
 			const password = document.querySelector('.password');
 			const passwordValue = document.querySelector('.password').value;
 
-			if(!email.value) {
-				highlightError(email, 'Please, enter your email');
-				return
-			}
-
-			if(!password.value) {
-				highlightError(password, 'Please, enter your password');
-				return
-			}
-			
 			await signInWithEmailAndPassword(auth, emailValue, passwordValue).then(() => {
 			}).catch((error) => {
 				const errorCode = error.code;
