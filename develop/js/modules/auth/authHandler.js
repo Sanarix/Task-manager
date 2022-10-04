@@ -33,7 +33,8 @@ export function authHandler(auth) {
 			const password = document.querySelector('.password');
 			const passwordValue = document.querySelector('.password').value;
 
-			await signInWithEmailAndPassword(auth, emailValue, passwordValue).then(() => {
+			await signInWithEmailAndPassword(auth, emailValue, passwordValue)
+			.then(() => {
 			}).catch((error) => {
 				const errorCode = error.code;
 

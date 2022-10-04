@@ -5,16 +5,32 @@ export function registrationHandler(auth) {
 	const registrationButton = document.querySelector('.registration-button_register');
 	const returnButton = document.querySelector('.registration-button_return');
 
-	registrationButton.addEventListener('click', event => {
+	registrationButton.addEventListener('click', async event => {
 		event.preventDefault();
-		const email = document.querySelector('.email').value;
-		const password = document.querySelector('.password').value;
+		const email = document.querySelector('.email');
+		const password = document.querySelector('.password');
 
-		if(!email) {
-			highlightError(email, 'Please add your email');
-		}
+		await createUserWithEmailAndPassword(auth, email, password)
+		.then(()=>{}).catch((error) => {
+			const errorCode = error.code.split(',');
+			const errorMessage = error.message;
+			console.log(errorCode);
+			console.log(errorMessage);
 
-		createUserWithEmailAndPassword(auth, email, password);
+			if(!email && errorCode[0] === 'auth/invalid-value-(email)') {
+				highlightError(email, 'Incorrect Email');
+			}
+
+			//TODO add regexp to check email to correct
+
+			if(
+				!password.value 
+				&& errorCode[1] 
+				=== '-starting-an-object-on-a-scalar-field-invalid-value-(password)'
+				) {
+				highlightError(password, 'Please enter password. Password can not be less than 6 characters');
+			}
+		});
 	})
 
 	returnButton.addEventListener('click', event => {
