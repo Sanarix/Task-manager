@@ -13,22 +13,18 @@ export function registrationHandler(auth) {
 		await createUserWithEmailAndPassword(auth, email, password)
 		.then(()=>{}).catch((error) => {
 			const errorCode = error.code.split(',');
-			const errorMessage = error.message;
-			console.log(errorCode);
-			console.log(errorMessage);
 
-			if(!email && errorCode[0] === 'auth/invalid-value-(email)') {
-				highlightError(email, 'Incorrect Email');
+			if(errorCode[0] === 'auth/invalid-value-(email)' && !email.value) {
+				highlightError(email, 'Enter your Email');
 			}
 
-			//TODO add regexp to check email to correct
+			//TODO add regexp for inputs to check correctness
 
-			if(
-				!password.value 
-				&& errorCode[1] 
+			if(errorCode[1] 
 				=== '-starting-an-object-on-a-scalar-field-invalid-value-(password)'
+				&& password.value.length < 6
 				) {
-				highlightError(password, 'Please enter password. Password can not be less than 6 characters');
+				highlightError(password, 'Check password! Password can not less than 6 characters.');
 			}
 		});
 	})

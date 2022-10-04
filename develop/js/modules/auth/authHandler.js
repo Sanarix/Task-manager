@@ -42,7 +42,14 @@ export function authHandler(auth) {
 					highlightError(email, 'Incorrect email');
 				}
 
-				if(errorCode === 'auth/wrong-password') {
+				if(!password.value) {
+					highlightError(password, 'Please enter your password');
+					return;
+				}
+
+				if(errorCode === 'auth/wrong-password'
+				|| errorCode === 'auth/internal-error'
+				) {
 					highlightError(password, 'Invalid password');
 				}
 
