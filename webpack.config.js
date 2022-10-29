@@ -7,7 +7,7 @@ module.exports = {
   entry: './develop/js/index.js',
   output: {
     path: path.resolve(__dirname, 'public'),
-		filename: 'main.js',
+		filename: '[name].js',
   },
   devServer: {
     port: 8888
@@ -16,9 +16,23 @@ module.exports = {
     type: 'memory'
   },
   devtool: 'source-map',
+  optimization: {
+    splitChunks: {
+      chunks: 'all'
+    }
+  },
   plugins: [
     new HTMLWebpackPlugin({
-      template: './develop/index.html'
+      template: './develop/index.html',
+      filename: 'index.html'
+    }),
+    new HTMLWebpackPlugin({
+      template: './develop/pages/about.html',
+      filename: 'about.html'
+    }),
+    new HTMLWebpackPlugin({
+      template: './develop/pages/contacts.html',
+      filename: 'contacts.html'
     }),
     new CleanWebpackPlugin(),
     new copyPlugin({
