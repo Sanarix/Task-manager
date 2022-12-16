@@ -10,8 +10,6 @@ module.exports = {
 		filename: '[name].js',
   },
   devServer: {
-    overlay: true,
-    open: true,
     port: 8888
   },
   cache: {
