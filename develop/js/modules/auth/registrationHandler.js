@@ -7,6 +7,7 @@ export function registrationHandler(auth) {
 
 	registrationButton.addEventListener('click', async event => {
 		event.preventDefault();
+		console.log('loginning');
 		const email = document.querySelector('.email');
 		const password = document.querySelector('.password');
 		await createUserWithEmailAndPassword(auth, email.value, password.value)
