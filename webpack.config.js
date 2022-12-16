@@ -1,7 +1,7 @@
 import { resolve } from 'path'
 import { CleanWebpackPlugin } from 'clean-webpack-plugin'
 import HTMLWebpackPlugin from 'html-webpack-plugin'
-import copyPlugin from 'copy-webpack-plugin'
+import copyPlugin from 'copy-webpack-plugin.js'
 
 export const entry = './develop/js/index.js'
 export const output = {
