@@ -10,7 +10,7 @@ export function registrationHandler(auth) {
 		const email = document.querySelector('.email');
 		const password = document.querySelector('.password');
 		await createUserWithEmailAndPassword(auth, email.value, password.value)
-		.then(()=>{}).catch((error) => {
+		.then((userCredential)=>{console.log(userCredential.user);}).catch((error) => {
 			const errorCode = error.code.split(',');
 
 			if(errorCode[0] === 'auth/invalid-value-(email)' && !email.value) {
