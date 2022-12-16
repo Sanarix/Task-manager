@@ -1,3 +1,3 @@
 # Task-manager
-Тестовое веб приложение для наработки навыков 
-https://task-manager-5c313.web.app
+Ознакомиться с приложением можно по тут:
+https://task-manager-5c313.firebaseapp.com/
