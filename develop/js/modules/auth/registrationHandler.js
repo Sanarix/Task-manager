@@ -9,8 +9,7 @@ export function registrationHandler(auth) {
 		event.preventDefault();
 		const email = document.querySelector('.email');
 		const password = document.querySelector('.password');
-
-		await createUserWithEmailAndPassword(auth, email, password)
+		await createUserWithEmailAndPassword(auth, email.value, password.value)
 		.then(()=>{}).catch((error) => {
 			const errorCode = error.code.split(',');
 
