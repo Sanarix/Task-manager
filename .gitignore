@@ -24,7 +24,4 @@ yarn-debug.log*
 yarn-error.log*
 
 # firebaseAuth
-=======
-node_modules
->>>>>>> f0d2489ae7e1124501df052c8d142257aa2e3a4b
 authConfig.json
