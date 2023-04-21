@@ -1,0 +1,32 @@
+{
+	"users" :{
+		"uid": {
+			"tasks" :{
+				"new-task-frame" : {
+					"-key-dddaa": {
+						"taskHeader" : "",
+						"taskText": "",
+						"userName" : "",
+						"uid" : ""
+					}
+				},
+				"progress-task-frame" : {
+					"-key-dddaa": {
+						"taskHeader" : "",
+						"taskText": "",
+						"userName" : "",
+						"uid" : ""
+					}
+				},
+				"finished-task-frame" : {
+					"-key-dddaa": {
+						"taskHeader" : "",
+						"taskText": "",
+						"userName" : "",
+						"uid" : ""
+					}
+				}
+			}
+		}
+	}
+}

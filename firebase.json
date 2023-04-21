@@ -4,6 +4,7 @@
     "ignore": [
       "firebase.json",
       "**/.*",
+<<<<<<< HEAD
       "**/node_modules/**"
     ],
     "rewrites": [
@@ -11,6 +12,10 @@
         "source": "**",
         "destination": "/index.html"
       }
+=======
+      "**/node_modules/**",
+      "authConfig.json"
+>>>>>>> f0d2489ae7e1124501df052c8d142257aa2e3a4b
     ]
   }
 }
