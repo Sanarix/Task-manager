@@ -14,7 +14,7 @@ export default function Task({id, task}) {
 				<div className="task-card_head">
 					<h3 className="task-card_header">{task.taskHeader}</h3>
 					<button className="task-card_menu">
-						<img src={images.edit} alt='edit' />
+						<img src={images.task.edit} alt='edit' />
 					</button>
 				</div>
 				{task.text &&
