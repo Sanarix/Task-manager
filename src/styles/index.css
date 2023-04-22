@@ -14,9 +14,7 @@ body #root { margin: 0; padding: 0; width: 100%; height: 100px; }
 
 .menu-title:hover.menu-list { opacity: 0; }
 
-.main { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -ms-flex-pack: distribute; justify-content: space-around; width: 80%; margin: auto; min-height: 60%; height: 100%; padding-bottom: 5%; }
-.main-button_login { position: absolute; top: 50%; left: 50%; -webkit-transform: translate(-50%, -50%); transform: translate(-50%, -50%); padding: 10px; width: 200px; height: 50px; background-color: #131c24; color: white; font-size: 1.5em; border: none; border-radius: 5px; }
-.main-button_login:hover { cursor: pointer; text-decoration: underline; }
+.main { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -ms-flex-pack: distribute; justify-content: space-around; width: 80%; margin: auto; padding-bottom: 5%; }
 
 .frame { -webkit-transition-duration: 300ms; transition-duration: 300ms; }
 .frame:hover { -webkit-box-shadow: 0 40px 20px rgba(0, 0, 0, 0.5); box-shadow: 0 40px 20px rgba(0, 0, 0, 0.5); }
@@ -30,7 +28,7 @@ body #root { margin: 0; padding: 0; width: 100%; height: 100px; }
 
 .finish-task-frame .task-card { background-color: #CCCCCC; }
 
-.task-header { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; font-size: 1.5em; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+.task-header { display: -webkit-box; display: -ms-flexbox; display: flex; -webkit-box-align: center; -ms-flex-align: center; align-items: center; -webkit-box-pack: center; -ms-flex-pack: center; justify-content: center; font-size: 1.5em; -webkit-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; background-color: transparent; }
 
 .new-task { color: green; }
 

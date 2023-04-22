@@ -2,15 +2,16 @@ import '../styles/LoginPage.css';
 import MyButton from '../UI/MyButton/MyButton';
 import MyInput from '../UI/MyInput/MyInput';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import getImages from '../functions/getImages';
 import signInWithEmail from '../modules/auth/signInWithEmail';
 
-export default function LoginPage({auth}) {
+export default function LoginPage({setUser}) {
 	const images = getImages();
 
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const navigate = useNavigate();
 
 	function handlerEmail(e) {
 		e.preventDefault();
@@ -24,7 +25,7 @@ export default function LoginPage({auth}) {
 	
 	function handleSubmit(e) {
 		e.preventDefault();
-		signInWithEmail(email, password)
+		signInWithEmail(email, password, setUser, navigate);
 	}
 
 	return (

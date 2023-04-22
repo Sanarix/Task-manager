@@ -7,19 +7,19 @@ import RegisterPage from '../../pages/RegisterPage';
 import AboutPage from '../../pages/AboutPage';
 import ContactPage from '../../pages/ContactPage';
 
-export default function Router({auth, setAuth}) {
+export default function Router({auth, setUser, tasks}) {
 	return (
 		<Routes>
 			<Route 
 			path="/" 
 			element={
 				auth ?
-				<HomePage/>
+				<HomePage tasks={tasks}/>
 				:
 				<StartPage/>
 			}>
 			</Route>
-			<Route path="login" element={<LoginPage auth={auth} setAuth={setAuth} />}></Route>
+			<Route path="login" element={<LoginPage auth={auth} setUser={setUser}/>}></Route>
 			<Route path="register" element={<RegisterPage />}></Route>
 			<Route path="about" element={<AboutPage />}></Route>
 			<Route path="contacts" element={<ContactPage />}></Route>
