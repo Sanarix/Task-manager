@@ -5,9 +5,11 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 
 import initApp from './functions/initApp';
-// import taskController from './modules/taskController/taskController';
 import useAuth from './hooks/useAuth';
+
 import useNewTasks from './hooks/useNewTasks';
+import useProgressTasks from './hooks/useProgressTasks';
+import useFinishedTasks from './hooks/useFinishedTasks';
 
 import { useState, useEffect } from 'react';
 
@@ -18,7 +20,9 @@ import realtimeDatabase from './modules/database/realtimeDatabase';
 
 
 export default function App() {
-const [tasks, setTasks] = useNewTasks();
+const [newTasks, setNewTasks] = useNewTasks();
+const [progressTasks, setProgressTasks] = useProgressTasks();
+const [finishedTasks, setFinishedTasks] = useFinishedTasks();
 const [user, setUser] = useState(null);
 
 
@@ -28,18 +32,19 @@ const auth = useAuth( setUser );
 useEffect(() => {
   if(user) {
     const db = realtimeDatabase(app);
-    getTasks(db, user.uid, setTasks);
+    getTasks(db, user.uid, setNewTasks, setProgressTasks, setFinishedTasks);
 
   }else {
     console.log('пользователь не авторизован');
-    setTasks([]);
+    setNewTasks([]);
+    setProgressTasks([]);
   }
 }, [user])
 
 
 useEffect(() => {
   console.log('таски обновились');
-}, [tasks])
+}, [newTasks, progressTasks, finishedTasks])
 
   return (
     <>
@@ -47,7 +52,7 @@ useEffect(() => {
       <Outlet />
       <Footer />
       
-      <Router auth={auth} setUser={setUser} tasks={tasks}/>
+      <Router auth={auth} setUser={setUser} newTasks={newTasks} progressTasks={progressTasks} finishedTasks={finishedTasks} />
     </>
   );
 }

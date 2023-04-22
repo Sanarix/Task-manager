@@ -7,14 +7,14 @@ import RegisterPage from '../../pages/RegisterPage';
 import AboutPage from '../../pages/AboutPage';
 import ContactPage from '../../pages/ContactPage';
 
-export default function Router({auth, setUser, tasks}) {
+export default function Router({auth, setUser, newTasks, progressTasks, finishedTasks}) {
 	return (
 		<Routes>
 			<Route 
 			path="/" 
 			element={
 				auth ?
-				<HomePage tasks={tasks}/>
+				<HomePage newTasks={newTasks} progressTasks={progressTasks} finishedTasks={finishedTasks} />
 				:
 				<StartPage/>
 			}>

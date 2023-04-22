@@ -1,7 +1,7 @@
 import { useState } from "react";
 
 export default function useNewTasks() {
-	const [tasks, setTasks] = useState([]);
+	const [newTasks, setNewTasks] = useState([]);
 
-	return [tasks, setTasks];
+	return [newTasks, setNewTasks];
 }
