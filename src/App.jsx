@@ -13,8 +13,6 @@ import { useState, useEffect } from 'react';
 
 //Для useEffect
 import getTasks from './modules/taskController/getTasks';
-import { getAuth} from 'firebase/auth';
-import { onValue } from 'firebase/database';
 import realtimeDatabase from './modules/database/realtimeDatabase';
 
 
@@ -30,24 +28,13 @@ const auth = useAuth( setUser );
 useEffect(() => {
   if(user) {
     const db = realtimeDatabase(app);
-    const auth = getAuth();
-    const {newTasks, progressTasks, finishedTasks} = getTasks(db, user.uid);
+    getTasks(db, user.uid, setTasks);
 
-    onValue(newTasks, (snapshot) => {
-      const data = snapshot.val();
-      for (let key in data) {
-        const task = data[key];
-        setTasks(prev => {
-          return [...prev, {key, task}]
-        })
-      }
-    })
   }else {
     console.log('пользователь не авторизован');
     setTasks([]);
   }
 }, [user])
-
 
 
 useEffect(() => {
