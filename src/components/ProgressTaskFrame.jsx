@@ -1,6 +1,6 @@
 import Task from "./Task";
 
-export default function ProgressTaskFrame({tasks}) {
+export default function ProgressTaskFrame({tasks, setModalOpen}) {
 	return (
 		<div className="frame">
 			<header className="task-header task-in-progress">
@@ -13,7 +13,7 @@ export default function ProgressTaskFrame({tasks}) {
 							return arr.includes(item) ? arr : [...arr, item];
 						}, []).map(({key, task}) => {
 							return (
-								<Task key={key} id={key} task={task} />
+								<Task key={key} id={key} task={task} setModalOpen={setModalOpen} />
 							)
 						})
 						:

@@ -1,12 +1,13 @@
-export default function MyModal() {
+export default function MyModal({children, setModalOpen, ...args}) {
 	return (
-		<div class="overlay">
-		<div class="modal-error hidden"></div>
-		<div class="modal-container">
-			<button class="close-button">
+		<div className="overlay">
+		<div className="modal-error hidden"></div>
+		<div className="modal-container">
+			<button className="close-button" onClick={() => {setModalOpen(false)}}>
 				<img src="./img/close.svg" alt="Close" />
 			</button>
-				<div class="modal-content">
+				<div className="modal-content">
+					{children}
 				</div>
 			</div>
 		</div>

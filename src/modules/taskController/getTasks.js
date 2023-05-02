@@ -1,4 +1,4 @@
-import { ref} from 'firebase/database';
+import { ref } from 'firebase/database';
 import tasksListener from './tasksListener';
 
 export default function getTasks(db, uid, setNewTasks, setProgressTasks, setFinishedTasks) {

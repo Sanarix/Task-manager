@@ -18,7 +18,6 @@ return (
 			<Link to="/contacts" className="header-nav-link" data-name="contacts">Contacts</Link>
 			<Link to="/login" className={auth ? 'header-nav-link log-in ' : 'header-nav-link log-in visible'} data-name="log-in">Sign in</Link>
 			<Link href="/login" className={auth ? 'header-nav-link log-out visible' : 'header-nav-link log-out'} data-name="log-out" onClick={handlerSignOut}>Log out</Link>
-			<button onClick={handlerSignOut}>out</button>
 		</nav>
 	</header>
 	)

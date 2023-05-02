@@ -1,6 +1,6 @@
 import Task from "./Task";
 
-export default function FinishedTaskFrame({tasks}) {
+export default function FinishedTaskFrame({tasks, setModalOpen}) {
 	return (
 		<div className="frame">
 			<header className="task-header finished-task">
@@ -13,7 +13,7 @@ export default function FinishedTaskFrame({tasks}) {
 							return arr.includes(item) ? arr : [...arr, item];
 						}, []).map(({key, task}) => {
 							return (
-								<Task key={key} id={key} task={task} />
+								<Task key={key} id={key} task={task} setModalOpen={setModalOpen} />
 							)
 						})
 						:

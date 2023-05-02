@@ -6,10 +6,8 @@ import Footer from './components/Footer';
 
 import initApp from './functions/initApp';
 import useAuth from './hooks/useAuth';
+import useTasks from './hooks/useTasks';
 
-import useNewTasks from './hooks/useNewTasks';
-import useProgressTasks from './hooks/useProgressTasks';
-import useFinishedTasks from './hooks/useFinishedTasks';
 
 import { useState, useEffect } from 'react';
 
@@ -17,42 +15,44 @@ import { useState, useEffect } from 'react';
 import getTasks from './modules/taskController/getTasks';
 import realtimeDatabase from './modules/database/realtimeDatabase';
 
-
-
 export default function App() {
-const [newTasks, setNewTasks] = useNewTasks();
-const [progressTasks, setProgressTasks] = useProgressTasks();
-const [finishedTasks, setFinishedTasks] = useFinishedTasks();
+const {
+  newTasks,
+  setNewTasks,
+  progressTasks,
+  setProgressTasks,
+  finishedTasks,
+  setFinishedTasks
+} = useTasks();
+
 const [user, setUser] = useState(null);
-
-
 const app = initApp();
 const auth = useAuth( setUser );
 
 useEffect(() => {
-  if(user) {
+  if(auth) {
     const db = realtimeDatabase(app);
     getTasks(db, user.uid, setNewTasks, setProgressTasks, setFinishedTasks);
-
   }else {
-    console.log('пользователь не авторизован');
     setNewTasks([]);
     setProgressTasks([]);
+    setFinishedTasks([]);
   }
-}, [user])
+}, [auth])
 
-
+//exclude duplicates of tasks
 useEffect(() => {
-  console.log('таски обновились');
-}, [newTasks, progressTasks, finishedTasks])
+  setNewTasks(newTasks)
+  setProgressTasks(progressTasks)
+  setFinishedTasks(finishedTasks)
+}, [newTasks, progressTasks, finishedTasks, auth])
 
   return (
     <>
       <Header auth={auth}/>
       <Outlet />
       <Footer />
-      
-      <Router auth={auth} setUser={setUser} newTasks={newTasks} progressTasks={progressTasks} finishedTasks={finishedTasks} />
+      <Router auth={auth} setUser={setUser} newTasks={newTasks} progressTasks={progressTasks} finishedTasks={finishedTasks}/>
     </>
   );
 }

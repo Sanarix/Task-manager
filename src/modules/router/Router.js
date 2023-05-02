@@ -14,7 +14,7 @@ export default function Router({auth, setUser, newTasks, progressTasks, finished
 			path="/" 
 			element={
 				auth ?
-				<HomePage newTasks={newTasks} progressTasks={progressTasks} finishedTasks={finishedTasks} />
+				<HomePage newTasks={newTasks} progressTasks={progressTasks} finishedTasks={finishedTasks}/>
 				:
 				<StartPage/>
 			}>
