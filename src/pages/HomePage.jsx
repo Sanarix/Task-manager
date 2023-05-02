@@ -1,7 +1,7 @@
 import NewTaskFrame from "../components/NewTaskFrame";
 import ProgressTaskFrame from "../components/ProgressTaskFrame";
 import FinishedTaskFrame from "../components/FinishedTaskFrame";
-import ModalEdit from "../UI/MyModal/ModalEdit";
+import MyModal from "../UI/MyModal/MyModal";
 import useModal from "../hooks/useModal";
 
 export default function HomePage({newTasks, progressTasks, finishedTasks}) {
@@ -14,7 +14,7 @@ export default function HomePage({newTasks, progressTasks, finishedTasks}) {
 			<ProgressTaskFrame tasks={progressTasks} setModalOpen={setModalOpen}/>
 			<FinishedTaskFrame tasks={finishedTasks} setModalOpen={setModalOpen}/>
 			{modalOpen &&
-			<ModalEdit setModalOpen={setModalOpen} />
+			<MyModal header="Edit task" setModalOpen={setModalOpen} />
 			}
 		</main>
 		</div>

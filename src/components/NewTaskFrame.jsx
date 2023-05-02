@@ -1,8 +1,14 @@
 import Task from "./Task";
 
 export default function NewTaskFrame({tasks, setModalOpen}) {
+	function handler(e) {
+		if(e.target.classList.contains('new-task-frame')) {
+			console.log('Открыть модалку создания таска');
+		}
+	}
+
 	return (
-		<div className="frame">
+		<div className="frame" onClick={handler}>
 			<header className="task-header new-task">
 				New Tasks
 			</header>
