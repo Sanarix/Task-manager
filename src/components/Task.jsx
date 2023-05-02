@@ -1,8 +1,12 @@
 import getImages from '../functions/getImages';
 
-export default function Task({id, task, setModalOpen}) {
+export default function Task({id, task, setModalOpen, setModalType}) {
 		const images = getImages();
 
+		function openModalEditHandler() {
+			setModalType('edit');
+			setModalOpen(true);
+		}
 
 		return(
 			<div
@@ -14,9 +18,7 @@ export default function Task({id, task, setModalOpen}) {
 			>
 				<div className="task-card_head">
 					<h3 className="task-card_header" >{task.taskHeader}</h3>
-					<button className="task-card_menu" onClick={(e) => {
-						setModalOpen(true)
-						}}>
+					<button className="task-card_menu" onClick={openModalEditHandler}>
 						<img src={images.task.edit} alt='edit' />
 					</button>
 				</div>
