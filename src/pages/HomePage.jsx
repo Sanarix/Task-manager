@@ -14,7 +14,7 @@ export default function HomePage({newTasks, progressTasks, finishedTasks}) {
 			<ProgressTaskFrame tasks={progressTasks} setModalOpen={setModalOpen}/>
 			<FinishedTaskFrame tasks={finishedTasks} setModalOpen={setModalOpen}/>
 			{modalOpen &&
-			<MyModal header="Edit task" setModalOpen={setModalOpen} />
+			<MyModal modalHeader="Edit task" setModalOpen={setModalOpen} />
 			}
 		</main>
 		</div>
