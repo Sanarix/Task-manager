@@ -1,8 +1,12 @@
 import { useState } from "react"
+import getImages from "../../functions/getImages";
 
 export default function MyModal({modalHeader, taskHeader='', taskText='', setModalOpen, modalType, ...args}) {
 	const [header, setHeader] = useState(taskHeader);
 	const [text, setText] = useState(taskText);
+	const images = getImages();
+
+
 
 	function resetHandler() {
 		setHeader('');
@@ -26,10 +30,10 @@ export default function MyModal({modalHeader, taskHeader='', taskText='', setMod
 								</div>
 								<div className="vertical-line"></div>
 								<div className="buttons">
-									<button className="btn btn-submit"><img src="./img/submit.svg" alt="submit" className="btn-img" title="Save" /></button>
-									<button className="btn btn-reset"><img src="./img/reset.svg" alt="reset" className="btn-img" title="Clear" onClick={resetHandler} /></button>
+									<button className="btn btn-submit"><img src={images.task.submit} alt="submit" className="btn-img" title="Save" /></button>
+									<button className="btn btn-reset"><img src={images.task.reset} alt="reset" className="btn-img" title="Clear" onClick={resetHandler} /></button>
 									{modalType!=="new" &&
-									<button className="btn btn-delete"><img src="./img/delete.svg" alt="delete" className="btn-img" title="Delete" /></button>
+									<button className="btn btn-delete"><img src={images.task.del} alt="delete" className="btn-img" title="Delete" /></button>
 									}
 								</div>
 							</div>
