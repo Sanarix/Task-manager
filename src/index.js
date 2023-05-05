@@ -4,11 +4,14 @@ import App from './App.jsx';
 import './styles/index.css';
 import { BrowserRouter } from 'react-router-dom';
 import './styles/index.css';
+import { ModalProvider } from './context/ModalContext.js';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
+  <ModalProvider>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </ModalProvider>
 );

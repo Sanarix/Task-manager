@@ -1,11 +1,12 @@
 import getImages from '../functions/getImages';
+import { useOpenModalToggle } from '../context/ModalContext';
 
-export default function Task({id, task, setModalOpen, setModalType}) {
+export default function Task({id, task}) {
 		const images = getImages();
+		const openModalToggle = useOpenModalToggle();
 
 		function openModalEditHandler() {
-			setModalType('edit');
-			setModalOpen(true);
+			openModalToggle({isOpen: true, modalType: 'edit'})
 		}
 
 		return(

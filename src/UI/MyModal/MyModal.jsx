@@ -1,24 +1,30 @@
 import { useState } from "react"
 import getImages from "../../functions/getImages";
+import { useOpenModalToggle } from '../../context/ModalContext';
+import {ref, push} from '@firebase/database';
 
-export default function MyModal({modalHeader, taskHeader='', taskText='', setModalOpen, modalType, ...args}) {
+export default function MyModal({modalHeader, taskHeader='', taskText='', modalType, ...args}) {
 	const [header, setHeader] = useState(taskHeader);
 	const [text, setText] = useState(taskText);
 	const images = getImages();
-
-
+	const openModalToggle = useOpenModalToggle();
 
 	function resetHandler() {
 		setHeader('');
 		setText('');
 	}
 
+	function addTask(db, uid) {
+
+	}
+	
+
 	return (
 		<div className="overlay">
 		<div className="modal-error hidden"></div>
 		<div className="modal-container">
-			<button className="close-button" onClick={() => {setModalOpen(false)}}>
-				<img src="./img/close.svg" alt="Close" />
+			<button className="close-button">
+				<img src="./img/close.svg" alt="Close" onClick={() => {openModalToggle(false)}} />
 			</button>
 				<div className="modal-content">
 					<div className="modal">

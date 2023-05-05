@@ -1,10 +1,12 @@
 import Task from "./Task";
+import {useOpenModalToggle} from '../context/ModalContext';
 
-export default function NewTaskFrame({tasks, setModalOpen, setModalType}) {
+export default function NewTaskFrame({tasks}) {
+	const openModalToggle = useOpenModalToggle();
+
 	function handler(e) {
 		if(e.target.classList.contains('new-task-frame')) {
-			setModalOpen(true)
-			setModalType('new')
+			openModalToggle({isOpen: true, modalType: 'new'});
 		}
 	}
 
@@ -20,7 +22,7 @@ export default function NewTaskFrame({tasks, setModalOpen, setModalType}) {
 							return arr.includes(item) ? arr : [...arr, item];
 						}, []).map(({key, task}) => {
 							return (
-								<Task key={key} id={key} task={task} setModalOpen={setModalOpen} setModalType={setModalType}/>
+								<Task key={key} id={key} task={task} />
 							)
 						})
 						:
