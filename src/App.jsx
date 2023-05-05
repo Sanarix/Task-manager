@@ -12,6 +12,7 @@ import useUser from './hooks/useUser';
 
 import { useOpenModal } from './context/ModalContext';
 import { useState, useEffect } from 'react';
+import Overlay from './components/Overlay';
 
 
 export default function App() {
@@ -33,11 +34,15 @@ const {
         <Footer />
         <Router auth={auth} setUser={setUser} newTasks={newTasks} progressTasks={progressTasks} finishedTasks={finishedTasks} />
         {isOpen && modalType==="edit" &&
-			<MyModal modalHeader="Edit task" />
+        <Overlay>
+          <MyModal modalHeader="Edit task" />
+        </Overlay>
 			}
 			{
 				isOpen && modalType==="new" && 
-				<MyModal modalHeader="Create task" modalType={modalType} />
+        <Overlay>
+          <MyModal modalHeader="Create task" modalType={modalType} />
+        </Overlay>
 			}
     </>
   );

@@ -20,12 +20,12 @@ export default function MyModal({modalHeader, taskHeader='', taskText='', modalT
 	
 
 	return (
-		<div className="overlay">
-		<div className="modal-error hidden"></div>
-		<div className="modal-container">
-			<button className="close-button">
-				<img src="./img/close.svg" alt="Close" onClick={() => {openModalToggle(false)}} />
-			</button>
+		<>
+			<div className="modal-error hidden"></div>
+			<div className="modal-container">
+				<button className="close-button">
+					<img src="./img/close.svg" alt="Close" onClick={() => {openModalToggle(false)}} />
+				</button>
 				<div className="modal-content">
 					<div className="modal">
 						<h2>{modalHeader}</h2>
@@ -37,7 +37,7 @@ export default function MyModal({modalHeader, taskHeader='', taskText='', modalT
 								<div className="vertical-line"></div>
 								<div className="buttons">
 									<button className="btn btn-submit"><img src={images.task.submit} alt="submit" className="btn-img" title="Save" /></button>
-									<button className="btn btn-reset"><img src={images.task.reset} alt="reset" className="btn-img" title="Clear" onClick={resetHandler} /></button>
+									<button className="btn btn-reset" onClick={resetHandler}><img src={images.task.reset} alt="reset" className="btn-img" title="Clear" /></button>
 									{modalType!=="new" &&
 									<button className="btn btn-delete"><img src={images.task.del} alt="delete" className="btn-img" title="Delete" /></button>
 									}
@@ -46,6 +46,6 @@ export default function MyModal({modalHeader, taskHeader='', taskText='', modalT
 						</div>
 				</div>
 			</div>
-		</div>
+		</>
 	)
 }
