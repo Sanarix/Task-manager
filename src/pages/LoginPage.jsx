@@ -7,7 +7,7 @@ import getImages from '../functions/getImages';
 import { useFirebase } from '../context/FirebaseContext';
 import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
-export default function LoginPage({setUser}) {
+export default function LoginPage() {
 	const images = getImages();
 
 	const [email, setEmail] = useState('');

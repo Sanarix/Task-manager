@@ -5,9 +5,7 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import MyModal from './UI/MyModal/MyModal';
 
-import initApp from './functions/initApp';
 import useTasks from './hooks/useTasks';
-import useUser from './hooks/useUser';
 import {useFirebase} from './context/FirebaseContext';
 
 import { useOpenModal } from './context/ModalContext';
@@ -15,8 +13,6 @@ import { useState, useEffect } from 'react';
 import Overlay from './components/Overlay';
 
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth';
-import { signOut } from 'firebase/auth';
 
 
 export default function App() {
@@ -37,7 +33,7 @@ export default function App() {
       <Header auth={auth}/>
         <Outlet />
         <Footer />
-        <Router auth={auth} newTasks={newTasks} progressTasks={progressTasks} finishedTasks={finishedTasks} />
+        <Router user={user} newTasks={newTasks} progressTasks={progressTasks} finishedTasks={finishedTasks} />
         {isOpen && modalType==="edit" &&
         <Overlay>
           <MyModal modalHeader="Edit task" />
