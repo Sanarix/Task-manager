@@ -4,21 +4,21 @@ import realtimeDatabase from "../modules/database/realtimeDatabase";
 import useDb from "./useDb";
 import getTasks from "../modules/taskController/getTasks";
 
-export default function useTasks(auth, app, user) {
+export default function useTasks(app, user) {
 	const [newTasks, setNewTasks] = useState([]);
 	const [progressTasks, setProgressTasks] = useState([]);
 	const [finishedTasks, setFinishedTasks] = useState([]);
 	const {db, setDatabase} = useDb();
 
 	useEffect(() => {
-		if(auth) {
+		if(user) {
 			setDatabase(realtimeDatabase(app));
 		}else {
 			setNewTasks([]);
 			setProgressTasks([]);
 			setFinishedTasks([]);
 		}
-	}, [auth])
+	}, [user])
 
 	useEffect(() => {
 		if(db) {
@@ -31,7 +31,7 @@ useEffect(() => {
   setNewTasks(newTasks)
   setProgressTasks(progressTasks)
   setFinishedTasks(finishedTasks)
-}, [newTasks, progressTasks, finishedTasks, auth])
+}, [newTasks, progressTasks, finishedTasks])
 
 	return {
 		newTasks,

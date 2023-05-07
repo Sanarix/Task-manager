@@ -1,7 +1,6 @@
 import { useState } from "react"
 import getImages from "../../functions/getImages";
 import { useOpenModalToggle } from '../../context/ModalContext';
-import {ref, push} from '@firebase/database';
 
 export default function MyModal({modalHeader, taskHeader='', taskText='', modalType, ...args}) {
 	const [header, setHeader] = useState(taskHeader);
@@ -15,7 +14,7 @@ export default function MyModal({modalHeader, taskHeader='', taskText='', modalT
 	}
 
 	function addTask(db, uid) {
-
+		
 	}
 	
 
@@ -36,7 +35,7 @@ export default function MyModal({modalHeader, taskHeader='', taskText='', modalT
 								</div>
 								<div className="vertical-line"></div>
 								<div className="buttons">
-									<button className="btn btn-submit"><img src={images.task.submit} alt="submit" className="btn-img" title="Save" /></button>
+									<button className="btn btn-submit"><img src={images.task.submit} alt="submit" className="btn-img" title="Save" onClick={addTask} /></button>
 									<button className="btn btn-reset" onClick={resetHandler}><img src={images.task.reset} alt="reset" className="btn-img" title="Clear" /></button>
 									{modalType!=="new" &&
 									<button className="btn btn-delete"><img src={images.task.del} alt="delete" className="btn-img" title="Delete" /></button>

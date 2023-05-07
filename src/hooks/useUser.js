@@ -1,10 +1,10 @@
 import { useState, useEffect } from "react";
+import {useAuthState} from 'react-firebase-hooks/auth';
+import {useFirebase} from '../context/FirebaseContext';
 
 export default function useUser(app) {
-	const [user, setUser] = useState(null);
+	const {auth} = useFirebase();
+	const [user, loading, error] = useAuthState(auth);
 	
-	return {
-		user,
-		setUser,
-	}
+	return [user, loading, error];
 }

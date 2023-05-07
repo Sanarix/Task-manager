@@ -15,7 +15,7 @@ export default function NewTaskFrame({tasks}) {
 			<header className="task-header new-task">
 				New Tasks
 			</header>
-			<div className="new-task-frame task-frame droppable">
+			<div className="new-task-frame task-frame droppable" onClick={handler}>
 				{
 						tasks.length ?
 						tasks.reduce((arr, item) => {

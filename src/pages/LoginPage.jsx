@@ -4,7 +4,8 @@ import MyInput from '../UI/MyInput/MyInput';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import getImages from '../functions/getImages';
-import signInWithEmail from '../modules/auth/signInWithEmail';
+import { useFirebase } from '../context/FirebaseContext';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 
 export default function LoginPage({setUser}) {
 	const images = getImages();
@@ -12,6 +13,13 @@ export default function LoginPage({setUser}) {
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
 	const navigate = useNavigate();
+	const {auth} = useFirebase();
+	const [
+		signInWithEmailAndPassword,
+		user,
+		loading,
+		error
+	] = useSignInWithEmailAndPassword(auth)
 
 	function handlerEmail(e) {
 		e.preventDefault();
@@ -25,7 +33,8 @@ export default function LoginPage({setUser}) {
 	
 	function handleSubmit(e) {
 		e.preventDefault();
-		signInWithEmail(email, password, setUser, navigate);
+		signInWithEmailAndPassword(email, password);
+		navigate('/');
 	}
 
 	return (
