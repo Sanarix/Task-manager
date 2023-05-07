@@ -17,7 +17,6 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 
 export default function App() {
   const {app, auth, db} = useFirebase();
-  // const [user, loading, error] = useUser();
   const {isOpen, modalType} = useOpenModal()
 	const [user, loading, error] = useAuthState(auth);
 
